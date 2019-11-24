@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/Background"
+    android:background="@drawable/background"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -23,7 +23,7 @@
             <ImageView
                 android:id="@+id/StarWars_Logo"
                 android:layout_centerHorizontal="true"
-                android:src="@drawable/StarWars_Logo"
+                android:src="@drawable/starwars_logo"
                 android:layout_width="200dp"
                 android:layout_height="80dp" />
             <TextView
