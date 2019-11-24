@@ -1,5 +1,6 @@
 package mathieu.r.View;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -16,8 +17,10 @@ import mathieu.r.R;
 public class ListFilmAdaptater extends RecyclerView.Adapter<ListFilmAdaptater.ViewHolder> {
 
     private ArrayList<Film> dataset;                                                                //List d'object Film
+    private Context context;
 
     public ListFilmAdaptater() {
+        this.context = context;
         dataset = new ArrayList<>();
     }
 
@@ -36,7 +39,12 @@ public class ListFilmAdaptater extends RecyclerView.Adapter<ListFilmAdaptater.Vi
 
     @Override
     public int getItemCount() {
-        return 0;
+        return dataset.size();
+    }
+
+    public void add(ArrayList<Film> listFilm) {                                                     // Ajout d'un object dans la liste
+        dataset.addAll(listFilm);
+        notifyDataSetChanged();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -49,7 +57,6 @@ public class ListFilmAdaptater extends RecyclerView.Adapter<ListFilmAdaptater.Vi
 
             imageView = (ImageView) itemView.findViewById(R.id.imageView);
             titreView = (TextView) itemView.findViewById(R.id.titreView);
-
 
         }
     }
