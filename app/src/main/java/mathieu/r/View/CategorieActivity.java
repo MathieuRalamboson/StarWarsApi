@@ -1,6 +1,7 @@
 package mathieu.r.View;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -41,6 +42,9 @@ public class CategorieActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 Toast.makeText(CategorieActivity.this, "Object : " + mTitle[position], Toast.LENGTH_SHORT).show();
+                if(position == 0) {
+                    startActivity(new Intent(CategorieActivity.this, MainActivity.class));
+                }
 
             }
         });
