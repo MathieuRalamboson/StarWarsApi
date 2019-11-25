@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);      // Configuration RecycleView
-        listFilmAdaptater = new ListFilmAdaptater();
+        listFilmAdaptater = new ListFilmAdaptater(this);
         recyclerView.setAdapter(listFilmAdaptater);
         recyclerView.setHasFixedSize(true);
         GridLayoutManager layoutManager = new GridLayoutManager(this,2); // Choix du nombre de colonne

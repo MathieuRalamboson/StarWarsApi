@@ -9,6 +9,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+
 import java.util.ArrayList;
 
 import mathieu.r.Model.Film;
@@ -19,7 +22,7 @@ public class ListFilmAdaptater extends RecyclerView.Adapter<ListFilmAdaptater.Vi
     private ArrayList<Film> dataset;                                                                //List d'object Film
     private Context context;
 
-    public ListFilmAdaptater() {
+    public ListFilmAdaptater(Context context) {
         this.context = context;
         dataset = new ArrayList<>();
     }
@@ -34,6 +37,14 @@ public class ListFilmAdaptater extends RecyclerView.Adapter<ListFilmAdaptater.Vi
     public void onBindViewHolder(ViewHolder holder, int position) {
         Film film = dataset.get(position);                                                          // Recuperation d'un film en fonction de son numero
         holder.titreView.setText(film.getTitle());                                                  // Initialisation du titre dans l'objet Film
+
+        Glide.with(context)                                                                         // Recuperation d'un image en fonction du numero
+                .load("https://starwars-visualguide.com/assets/img/films/" + film.getEpisode_id() + ".jpg")
+                .centerCrop()                                                                       // URL de l'image
+                .crossFade()
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(holder.imageView);
+
 
     }
 
