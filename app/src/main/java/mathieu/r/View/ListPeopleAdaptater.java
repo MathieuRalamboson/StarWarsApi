@@ -14,32 +14,32 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import java.util.ArrayList;
 
-import mathieu.r.Model.Film;
+import mathieu.r.Model.People;
 import mathieu.r.R;
 
-public class ListFilmAdaptater extends RecyclerView.Adapter<ListFilmAdaptater.ViewHolder> {
+public class ListPeopleAdaptater extends RecyclerView.Adapter<ListPeopleAdaptater.ViewHolder> {
 
-    private ArrayList<Film> dataset;                                                                //List d'object Film
+    private ArrayList<People> dataset;                                                                //List d'object People
     private Context context;
 
-    public ListFilmAdaptater(Context context) {
+    public ListPeopleAdaptater(Context context) {
         this.context = context;
         dataset = new ArrayList<>();
     }
 
     @Override
     public ViewHolder onCreateViewHolder( ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_film,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_people,parent,false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Film film = dataset.get(position);                                                          // Recuperation d'un film en fonction de son numero
-        holder.titreView.setText(film.getTitle());                                                  // Initialisation du titre dans l'objet Film
+        People People = dataset.get(position);                                                          // Recuperation d'un People en fonction de son numero
+        holder.titreView.setText(People.getName());                                                  // Initialisation du titre dans l'objet People
 
         Glide.with(context)                                                                         // Recuperation d'un image en fonction du numero
-                .load("https://starwars-visualguide.com/assets/img/films/" + film.getEpisode_id() + ".jpg")
+                .load("https://starwars-visualguide.com/assets/img/characters/" + People.getNumber() + ".jpg")
                 .centerCrop()                                                                       // URL de l'image
                 .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
@@ -53,8 +53,8 @@ public class ListFilmAdaptater extends RecyclerView.Adapter<ListFilmAdaptater.Vi
         return dataset.size();
     }
 
-    public void add(ArrayList<Film> listFilm) {                                                     // Ajout d'un object dans la liste
-        dataset.addAll(listFilm);
+    public void add(ArrayList<People> listPeople) {                                                     // Ajout d'un object dans la liste
+        dataset.addAll(listPeople);
         notifyDataSetChanged();
     }
 

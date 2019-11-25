@@ -45,6 +45,9 @@ public class CategorieActivity extends AppCompatActivity {
                 if(position == 0) {
                     startActivity(new Intent(CategorieActivity.this, FilmActivity.class));
                 }
+                if(position == 1) {
+                    startActivity(new Intent(CategorieActivity.this, PeopleActivity.class));
+                }
 
             }
         });
