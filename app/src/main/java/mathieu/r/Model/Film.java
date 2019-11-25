@@ -2,7 +2,7 @@ package mathieu.r.Model;
 
 public class Film {
     private String title;           // Titre
-    private String episode_id;      // Numero Episode
+    private Integer episode_id;      // Numero Episode
     private String opening_crawl;   // Desciption
     private String director;        // Réalisateur
     private String producer;        // Producteur
@@ -20,11 +20,12 @@ public class Film {
         this.title = title;
     }
 
-    public String getEpisode_id() {
-        return episode_id;
+    public Integer getEpisode_id() {
+        String[] urlPartes = url.split("/");
+        return Integer.parseInt(urlPartes[urlPartes.length - 1]);
     }
 
-    public void setEpisode_id(String episode_id) {
+    public void setEpisode_id(Integer episode_id) {
         this.episode_id = episode_id;
     }
 
