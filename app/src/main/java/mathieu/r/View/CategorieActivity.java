@@ -21,7 +21,7 @@ public class CategorieActivity extends AppCompatActivity {
 
     ListView listView;
     String mTitle[] = {"Films", "People", "Planets", "Species", "Starships","Vehicles"};
-    String mDescription[] = {"Films Description", "People Description", "Planets Description", "Species Description", "Starships Description"};
+    String mDescription[] = {"Films Description", "People Description", "Planets Description", "Species Description", "Starships Description", "Vehicles Description"};
     int image[] = {R.drawable.films, R.drawable.people, R.drawable.planets, R.drawable.species, R.drawable.starships, R.drawable.vehicles};
 
 
