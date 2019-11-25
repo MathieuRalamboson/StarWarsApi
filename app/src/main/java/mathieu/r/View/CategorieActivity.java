@@ -43,7 +43,7 @@ public class CategorieActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 Toast.makeText(CategorieActivity.this, "Object : " + mTitle[position], Toast.LENGTH_SHORT).show();
                 if(position == 0) {
-                    startActivity(new Intent(CategorieActivity.this, MainActivity.class));
+                    startActivity(new Intent(CategorieActivity.this, FilmActivity.class));
                 }
 
             }
