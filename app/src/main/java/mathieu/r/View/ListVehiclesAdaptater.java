@@ -13,15 +13,15 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import java.util.ArrayList;
 
-import mathieu.r.Model.Vehicle;
+import mathieu.r.Model.Vehicles;
 import mathieu.r.R;
 
-public class ListVehicleAdaptater extends RecyclerView.Adapter<ListVehicleAdaptater.ViewHolder> {
+public class ListVehiclesAdaptater extends RecyclerView.Adapter<ListVehiclesAdaptater.ViewHolder> {
 
-    private ArrayList<Vehicle> dataset;                                                                //List d'object Vehicle
+    private ArrayList<Vehicles> dataset;                                                                //List d'object Vehicles
     private Context context;
 
-    public ListVehicleAdaptater(Context context) {
+    public ListVehiclesAdaptater(Context context) {
         this.context = context;
         dataset = new ArrayList<>();
     }
@@ -34,8 +34,8 @@ public class ListVehicleAdaptater extends RecyclerView.Adapter<ListVehicleAdapta
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Vehicle Vehicle = dataset.get(position);                                                          // Recuperation d'un Vehicle en fonction de son numero
-        holder.titreView.setText(Vehicle.getName());                                                  // Initialisation du titre dans l'objet Vehicle
+        Vehicles Vehicle = dataset.get(position);                                                          // Recuperation d'un Vehicles en fonction de son numero
+        holder.titreView.setText(Vehicle.getName());                                                  // Initialisation du titre dans l'objet Vehicles
 
         Glide.with(context)                                                                         // Recuperation d'un image en fonction du numero
                 .load("https://starwars-visualguide.com/assets/img/vehicles/" + Vehicle.getNumber() + ".jpg")
@@ -52,7 +52,7 @@ public class ListVehicleAdaptater extends RecyclerView.Adapter<ListVehicleAdapta
         return dataset.size();
     }
 
-    public void add(ArrayList<Vehicle> listVehicle) {                                                     // Ajout d'un object dans la liste
+    public void add(ArrayList<Vehicles> listVehicle) {                                                     // Ajout d'un object dans la liste
         dataset.addAll(listVehicle);
         notifyDataSetChanged();
     }

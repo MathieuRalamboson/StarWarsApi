@@ -1,6 +1,6 @@
 package mathieu.r.Model;
 
-public class Vehicle {
+public class Vehicles {
     private Integer number;
     private String name;
     private String model;

@@ -16,7 +16,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import mathieu.r.Model.Starships;
 import mathieu.r.R;
 
 public class CategorieActivity extends AppCompatActivity {
@@ -59,7 +58,7 @@ public class CategorieActivity extends AppCompatActivity {
                     startActivity(new Intent(CategorieActivity.this, StarshipsActivity.class));
                 }
                 if(position == 5) {
-                    startActivity(new Intent(CategorieActivity.this, VehicleActivity.class));
+                    startActivity(new Intent(CategorieActivity.this, VehiclesActivity.class));
                 }
 
             }

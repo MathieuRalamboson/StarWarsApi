@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".View.VehicleActivity"></activity>
+        <activity android:name=".View.VehiclesActivity"></activity>
         <activity android:name=".View.StarshipsActivity" />
         <activity android:name=".View.SpeciesActivity" />
         <activity android:name=".View.PlanetsActivity" />

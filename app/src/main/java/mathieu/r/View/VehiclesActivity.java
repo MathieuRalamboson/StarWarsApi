@@ -8,9 +8,9 @@ import android.util.Log;
 
 import java.util.ArrayList;
 
-import mathieu.r.Controller.VehicleApiService;
-import mathieu.r.Model.Vehicle;
-import mathieu.r.Model.VehicleReponse;
+import mathieu.r.Controller.VehiclesApiService;
+import mathieu.r.Model.Vehicles;
+import mathieu.r.Model.VehiclesReponse;
 import mathieu.r.R;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -18,13 +18,13 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class VehicleActivity extends AppCompatActivity {
+public class VehiclesActivity extends AppCompatActivity {
 
-    private static final String TAG = "Vehicle";
+    private static final String TAG = "Vehicles";
     private Retrofit retrofit;
     private RecyclerView recyclerView;
 
-    private ListVehicleAdaptater listVehicleAdaptater;
+    private ListVehiclesAdaptater listVehicleAdaptater;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +33,7 @@ public class VehicleActivity extends AppCompatActivity {
 
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);      // Configuration RecycleView
-        listVehicleAdaptater = new ListVehicleAdaptater(this);
+        listVehicleAdaptater = new ListVehiclesAdaptater(this);
         recyclerView.setAdapter(listVehicleAdaptater);
         recyclerView.setHasFixedSize(true);
         GridLayoutManager layoutManager = new GridLayoutManager(this,2); // Choix du nombre de colonne
@@ -48,23 +48,23 @@ public class VehicleActivity extends AppCompatActivity {
     }
 
     private void DataRequest() { // Appel vers Api
-        VehicleApiService service = retrofit.create(VehicleApiService.class);
-        Call<VehicleReponse> VehicleReponseCall = service.ListVehicle();
+        VehiclesApiService service = retrofit.create(VehiclesApiService.class);
+        Call<VehiclesReponse> VehicleReponseCall = service.ListVehicles();
 
-        VehicleReponseCall.enqueue(new Callback<VehicleReponse>() {
+        VehicleReponseCall.enqueue(new Callback<VehiclesReponse>() {
             @Override
-            public void onResponse(Call<VehicleReponse> call, Response<VehicleReponse> response) {
+            public void onResponse(Call<VehiclesReponse> call, Response<VehiclesReponse> response) {
                 if(response.isSuccessful()) {                               // Si il y a réponse utilisable/bonne forme
 
-                    VehicleReponse VehicleReponse = response.body();              // L'objet VehicleRepnse est remplie par le JSON
-                    ArrayList<Vehicle> listVehicle = VehicleReponse.getResults();    // On remplie ArrayList avec la réponse
+                    VehiclesReponse VehicleReponse = response.body();              // L'objet VehicleRepnse est remplie par le JSON
+                    ArrayList<Vehicles> listVehicle = VehicleReponse.getResults();    // On remplie ArrayList avec la réponse
 
                     listVehicleAdaptater.add(listVehicle);
 
                     // Test récupération titre Vehicles
 //                    for (int i = 0; i < listVehicle.size(); i++) {
-//                        Vehicle Vehicle = listVehicle.get(i);
-//                        Log.i(TAG, "Vehicle " + i + " : " + Vehicle.getTitle());
+//                        Vehicles Vehicles = listVehicle.get(i);
+//                        Log.i(TAG, "Vehicles " + i + " : " + Vehicles.getTitle());
 //                    }
 
                 }else{                                                      // Sinon
@@ -73,7 +73,7 @@ public class VehicleActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<VehicleReponse> call, Throwable t) {
+            public void onFailure(Call<VehiclesReponse> call, Throwable t) {
                 Log.e(TAG, "Erreur Pas de Reponse : " + t.getMessage());
             }
         });
