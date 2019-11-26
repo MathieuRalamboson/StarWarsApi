@@ -58,6 +58,9 @@ public class CategorieActivity extends AppCompatActivity {
                 if(position == 4) {
                     startActivity(new Intent(CategorieActivity.this, StarshipsActivity.class));
                 }
+                if(position == 5) {
+                    startActivity(new Intent(CategorieActivity.this, VehicleActivity.class));
+                }
 
             }
         });
