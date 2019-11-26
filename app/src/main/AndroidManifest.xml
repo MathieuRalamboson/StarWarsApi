@@ -11,6 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".View.SpeciesActivity"></activity>
         <activity android:name=".View.PlanetsActivity"></activity>
         <activity android:name=".View.PeopleActivity" />
         <activity android:name=".View.FilmActivity" />

@@ -51,6 +51,9 @@ public class CategorieActivity extends AppCompatActivity {
                 if(position == 2) {
                     startActivity(new Intent(CategorieActivity.this, PlanetsActivity.class));
                 }
+                if(position == 3) {
+                    startActivity(new Intent(CategorieActivity.this, SpeciesActivity.class));
+                }
 
             }
         });
