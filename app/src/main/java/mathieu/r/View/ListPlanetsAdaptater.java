@@ -29,7 +29,7 @@ public class ListPlanetsAdaptater extends RecyclerView.Adapter<ListPlanetsAdapta
 
     @Override
     public ViewHolder onCreateViewHolder( ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_planets,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_film,parent,false);
         return new ViewHolder(view);
     }
 

@@ -29,7 +29,7 @@ public class ListPeopleAdaptater extends RecyclerView.Adapter<ListPeopleAdaptate
 
     @Override
     public ViewHolder onCreateViewHolder( ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_people,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_film,parent,false);
         return new ViewHolder(view);
     }
 
