@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".View.PeopleActivity"></activity>
+        <activity android:name=".View.PlanetsActivity"></activity>
+        <activity android:name=".View.PeopleActivity" />
         <activity android:name=".View.FilmActivity" />
         <activity android:name=".View.CategorieActivity">
             <intent-filter>
