@@ -1,6 +1,6 @@
 package mathieu.r.Controller;
 
-import mathieu.r.Model.FilmReponse;
+import mathieu.r.Model.Response.FilmReponse;
 import retrofit2.Call;
 import retrofit2.http.GET;
 

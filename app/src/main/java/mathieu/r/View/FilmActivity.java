@@ -10,8 +10,9 @@ import java.util.ArrayList;
 
 import mathieu.r.Controller.FilmApiService;
 import mathieu.r.Model.Film;
-import mathieu.r.Model.FilmReponse;
+import mathieu.r.Model.Response.FilmReponse;
 import mathieu.r.R;
+import mathieu.r.View.Adaptater.ListFilmAdaptater;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

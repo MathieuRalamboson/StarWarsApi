@@ -10,8 +10,9 @@ import java.util.ArrayList;
 
 import mathieu.r.Controller.StarshipsApiService;
 import mathieu.r.Model.Starships;
-import mathieu.r.Model.StarshipsReponse;
+import mathieu.r.Model.Response.StarshipsReponse;
 import mathieu.r.R;
+import mathieu.r.View.Adaptater.ListStarshipsAdaptater;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

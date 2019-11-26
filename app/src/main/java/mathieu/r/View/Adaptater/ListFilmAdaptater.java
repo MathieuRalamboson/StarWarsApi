@@ -1,4 +1,4 @@
-package mathieu.r.View;
+package mathieu.r.View.Adaptater;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -13,15 +13,15 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import java.util.ArrayList;
 
-import mathieu.r.Model.Species;
+import mathieu.r.Model.Film;
 import mathieu.r.R;
 
-public class ListSpeciesAdaptater extends RecyclerView.Adapter<ListSpeciesAdaptater.ViewHolder> {
+public class ListFilmAdaptater extends RecyclerView.Adapter<ListFilmAdaptater.ViewHolder> {
 
-    private ArrayList<Species> dataset;                                                                //List d'object Species
+    private ArrayList<Film> dataset;                                                                //List d'object Film
     private Context context;
 
-    public ListSpeciesAdaptater(Context context) {
+    public ListFilmAdaptater(Context context) {
         this.context = context;
         dataset = new ArrayList<>();
     }
@@ -34,11 +34,11 @@ public class ListSpeciesAdaptater extends RecyclerView.Adapter<ListSpeciesAdapta
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Species Species = dataset.get(position);                                                          // Recuperation d'un Species en fonction de son numero
-        holder.titreView.setText(Species.getName());                                                  // Initialisation du titre dans l'objet Species
+        Film film = dataset.get(position);                                                          // Recuperation d'un film en fonction de son numero
+        holder.titreView.setText(film.getTitle());                                                  // Initialisation du titre dans l'objet Film
 
         Glide.with(context)                                                                         // Recuperation d'un image en fonction du numero
-                .load("https://starwars-visualguide.com/assets/img/species/" + Species.getNumber() + ".jpg")
+                .load("https://starwars-visualguide.com/assets/img/films/" + film.getEpisode_id() + ".jpg")
                 .centerCrop()                                                                       // URL de l'image
                 .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
@@ -52,8 +52,8 @@ public class ListSpeciesAdaptater extends RecyclerView.Adapter<ListSpeciesAdapta
         return dataset.size();
     }
 
-    public void add(ArrayList<Species> listSpecies) {                                                     // Ajout d'un object dans la liste
-        dataset.addAll(listSpecies);
+    public void add(ArrayList<Film> listFilm) {                                                     // Ajout d'un object dans la liste
+        dataset.addAll(listFilm);
         notifyDataSetChanged();
     }
 

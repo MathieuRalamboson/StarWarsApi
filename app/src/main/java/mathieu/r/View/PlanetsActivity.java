@@ -10,8 +10,9 @@ import java.util.ArrayList;
 
 import mathieu.r.Controller.PlanetsApiService;
 import mathieu.r.Model.Planets;
-import mathieu.r.Model.PlanetsReponse;
+import mathieu.r.Model.Response.PlanetsReponse;
 import mathieu.r.R;
+import mathieu.r.View.Adaptater.ListPlanetsAdaptater;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

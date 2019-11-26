@@ -1,4 +1,4 @@
-package mathieu.r.View;
+package mathieu.r.View.Adaptater;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -13,15 +13,15 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import java.util.ArrayList;
 
-import mathieu.r.Model.Film;
+import mathieu.r.Model.Starships;
 import mathieu.r.R;
 
-public class ListFilmAdaptater extends RecyclerView.Adapter<ListFilmAdaptater.ViewHolder> {
+public class ListStarshipsAdaptater extends RecyclerView.Adapter<ListStarshipsAdaptater.ViewHolder> {
 
-    private ArrayList<Film> dataset;                                                                //List d'object Film
+    private ArrayList<Starships> dataset;                                                                //List d'object Starships
     private Context context;
 
-    public ListFilmAdaptater(Context context) {
+    public ListStarshipsAdaptater(Context context) {
         this.context = context;
         dataset = new ArrayList<>();
     }
@@ -34,11 +34,11 @@ public class ListFilmAdaptater extends RecyclerView.Adapter<ListFilmAdaptater.Vi
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Film film = dataset.get(position);                                                          // Recuperation d'un film en fonction de son numero
-        holder.titreView.setText(film.getTitle());                                                  // Initialisation du titre dans l'objet Film
+        Starships Starships = dataset.get(position);                                                          // Recuperation d'un Starships en fonction de son numero
+        holder.titreView.setText(Starships.getName());                                                  // Initialisation du titre dans l'objet Starships
 
         Glide.with(context)                                                                         // Recuperation d'un image en fonction du numero
-                .load("https://starwars-visualguide.com/assets/img/films/" + film.getEpisode_id() + ".jpg")
+                .load("https://starwars-visualguide.com/assets/img/starships/" + Starships.getNumber() + ".jpg")
                 .centerCrop()                                                                       // URL de l'image
                 .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
@@ -52,8 +52,8 @@ public class ListFilmAdaptater extends RecyclerView.Adapter<ListFilmAdaptater.Vi
         return dataset.size();
     }
 
-    public void add(ArrayList<Film> listFilm) {                                                     // Ajout d'un object dans la liste
-        dataset.addAll(listFilm);
+    public void add(ArrayList<Starships> listStarships) {                                                     // Ajout d'un object dans la liste
+        dataset.addAll(listStarships);
         notifyDataSetChanged();
     }
 

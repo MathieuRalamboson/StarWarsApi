@@ -10,8 +10,9 @@ import java.util.ArrayList;
 
 import mathieu.r.Controller.VehiclesApiService;
 import mathieu.r.Model.Vehicles;
-import mathieu.r.Model.VehiclesReponse;
+import mathieu.r.Model.Response.VehiclesReponse;
 import mathieu.r.R;
+import mathieu.r.View.Adaptater.ListVehiclesAdaptater;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

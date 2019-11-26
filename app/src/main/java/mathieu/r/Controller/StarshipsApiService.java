@@ -1,6 +1,6 @@
 package mathieu.r.Controller;
 
-import mathieu.r.Model.StarshipsReponse;
+import mathieu.r.Model.Response.StarshipsReponse;
 import retrofit2.Call;
 import retrofit2.http.GET;
 

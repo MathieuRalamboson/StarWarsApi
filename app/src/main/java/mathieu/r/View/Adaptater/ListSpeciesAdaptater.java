@@ -1,4 +1,4 @@
-package mathieu.r.View;
+package mathieu.r.View.Adaptater;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -13,15 +13,15 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import java.util.ArrayList;
 
-import mathieu.r.Model.Vehicles;
+import mathieu.r.Model.Species;
 import mathieu.r.R;
 
-public class ListVehiclesAdaptater extends RecyclerView.Adapter<ListVehiclesAdaptater.ViewHolder> {
+public class ListSpeciesAdaptater extends RecyclerView.Adapter<ListSpeciesAdaptater.ViewHolder> {
 
-    private ArrayList<Vehicles> dataset;                                                                //List d'object Vehicles
+    private ArrayList<Species> dataset;                                                                //List d'object Species
     private Context context;
 
-    public ListVehiclesAdaptater(Context context) {
+    public ListSpeciesAdaptater(Context context) {
         this.context = context;
         dataset = new ArrayList<>();
     }
@@ -34,11 +34,11 @@ public class ListVehiclesAdaptater extends RecyclerView.Adapter<ListVehiclesAdap
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Vehicles Vehicle = dataset.get(position);                                                          // Recuperation d'un Vehicles en fonction de son numero
-        holder.titreView.setText(Vehicle.getName());                                                  // Initialisation du titre dans l'objet Vehicles
+        Species Species = dataset.get(position);                                                          // Recuperation d'un Species en fonction de son numero
+        holder.titreView.setText(Species.getName());                                                  // Initialisation du titre dans l'objet Species
 
         Glide.with(context)                                                                         // Recuperation d'un image en fonction du numero
-                .load("https://starwars-visualguide.com/assets/img/vehicles/" + Vehicle.getNumber() + ".jpg")
+                .load("https://starwars-visualguide.com/assets/img/species/" + Species.getNumber() + ".jpg")
                 .centerCrop()                                                                       // URL de l'image
                 .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
@@ -52,8 +52,8 @@ public class ListVehiclesAdaptater extends RecyclerView.Adapter<ListVehiclesAdap
         return dataset.size();
     }
 
-    public void add(ArrayList<Vehicles> listVehicle) {                                                     // Ajout d'un object dans la liste
-        dataset.addAll(listVehicle);
+    public void add(ArrayList<Species> listSpecies) {                                                     // Ajout d'un object dans la liste
+        dataset.addAll(listSpecies);
         notifyDataSetChanged();
     }
 

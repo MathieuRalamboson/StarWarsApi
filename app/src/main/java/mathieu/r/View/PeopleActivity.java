@@ -10,8 +10,9 @@ import java.util.ArrayList;
 
 import mathieu.r.Controller.PeopleApiService;
 import mathieu.r.Model.People;
-import mathieu.r.Model.PeopleReponse;
+import mathieu.r.Model.Response.PeopleReponse;
 import mathieu.r.R;
+import mathieu.r.View.Adaptater.ListPeopleAdaptater;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

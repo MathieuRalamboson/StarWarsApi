@@ -10,8 +10,9 @@ import java.util.ArrayList;
 
 import mathieu.r.Controller.SpeciesApiService;
 import mathieu.r.Model.Species;
-import mathieu.r.Model.SpeciesReponse;
+import mathieu.r.Model.Response.SpeciesReponse;
 import mathieu.r.R;
+import mathieu.r.View.Adaptater.ListSpeciesAdaptater;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

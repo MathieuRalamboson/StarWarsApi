@@ -1,6 +1,8 @@
-package mathieu.r.Model;
+package mathieu.r.Model.Response;
 
 import java.util.ArrayList;
+
+import mathieu.r.Model.People;
 
 public class PeopleReponse {
 

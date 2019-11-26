@@ -1,6 +1,6 @@
 package mathieu.r.Controller;
 
-import mathieu.r.Model.PeopleReponse;
+import mathieu.r.Model.Response.PeopleReponse;
 import retrofit2.Call;
 import retrofit2.http.GET;
 

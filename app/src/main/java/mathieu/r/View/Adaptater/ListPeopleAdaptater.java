@@ -1,4 +1,4 @@
-package mathieu.r.View;
+package mathieu.r.View.Adaptater;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

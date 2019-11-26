@@ -1,4 +1,4 @@
-package mathieu.r.View;
+package mathieu.r.View.Adaptater;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -13,15 +13,15 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import java.util.ArrayList;
 
-import mathieu.r.Model.Starships;
+import mathieu.r.Model.Planets;
 import mathieu.r.R;
 
-public class ListStarshipsAdaptater extends RecyclerView.Adapter<ListStarshipsAdaptater.ViewHolder> {
+public class ListPlanetsAdaptater extends RecyclerView.Adapter<ListPlanetsAdaptater.ViewHolder> {
 
-    private ArrayList<Starships> dataset;                                                                //List d'object Starships
+    private ArrayList<Planets> dataset;                                                                //List d'object Planets
     private Context context;
 
-    public ListStarshipsAdaptater(Context context) {
+    public ListPlanetsAdaptater(Context context) {
         this.context = context;
         dataset = new ArrayList<>();
     }
@@ -34,11 +34,11 @@ public class ListStarshipsAdaptater extends RecyclerView.Adapter<ListStarshipsAd
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Starships Starships = dataset.get(position);                                                          // Recuperation d'un Starships en fonction de son numero
-        holder.titreView.setText(Starships.getName());                                                  // Initialisation du titre dans l'objet Starships
+        Planets Planets = dataset.get(position);                                                          // Recuperation d'un Planets en fonction de son numero
+        holder.titreView.setText(Planets.getName());                                                  // Initialisation du titre dans l'objet Planets
 
         Glide.with(context)                                                                         // Recuperation d'un image en fonction du numero
-                .load("https://starwars-visualguide.com/assets/img/starships/" + Starships.getNumber() + ".jpg")
+                .load("https://starwars-visualguide.com/assets/img/planets/" + Planets.getNumber() + ".jpg")
                 .centerCrop()                                                                       // URL de l'image
                 .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
@@ -52,8 +52,8 @@ public class ListStarshipsAdaptater extends RecyclerView.Adapter<ListStarshipsAd
         return dataset.size();
     }
 
-    public void add(ArrayList<Starships> listStarships) {                                                     // Ajout d'un object dans la liste
-        dataset.addAll(listStarships);
+    public void add(ArrayList<Planets> listPlanets) {                                                     // Ajout d'un object dans la liste
+        dataset.addAll(listPlanets);
         notifyDataSetChanged();
     }
 

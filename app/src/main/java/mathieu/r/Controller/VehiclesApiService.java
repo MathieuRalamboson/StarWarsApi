@@ -1,6 +1,6 @@
 package mathieu.r.Controller;
 
-import mathieu.r.Model.VehiclesReponse;
+import mathieu.r.Model.Response.VehiclesReponse;
 import retrofit2.Call;
 import retrofit2.http.GET;
 
