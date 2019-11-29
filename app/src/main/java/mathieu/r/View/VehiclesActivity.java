@@ -1,5 +1,6 @@
 package mathieu.r.View;
 
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -25,7 +26,10 @@ public class VehiclesActivity extends AppCompatActivity {
     private Retrofit retrofit;
     private RecyclerView recyclerView;
 
-    private ListVehiclesAdaptater listVehicleAdaptater;
+    private ListVehiclesAdaptater listVehiclesAdaptater;
+
+    private int nbrPageParcouru;
+    private boolean verif;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,37 +38,65 @@ public class VehiclesActivity extends AppCompatActivity {
 
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);      // Configuration RecycleView
-        listVehicleAdaptater = new ListVehiclesAdaptater(this);
-        recyclerView.setAdapter(listVehicleAdaptater);
+        listVehiclesAdaptater = new ListVehiclesAdaptater(this);
+        recyclerView.setAdapter(listVehiclesAdaptater);
         recyclerView.setHasFixedSize(true);
-        GridLayoutManager layoutManager = new GridLayoutManager(this,2); // Choix du nombre de colonne
+        final GridLayoutManager layoutManager = new GridLayoutManager(this,2); // Choix du nombre de colonne
         recyclerView.setLayoutManager(layoutManager);
+
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() { // Check si il y a scroll , si oui on passe à la page suivante
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+
+                if (dy > 0) { //Check nbr d'object deja vu
+                    int visibleItemCount = layoutManager.getChildCount();
+                    int totalItemCount = layoutManager.getItemCount();
+                    int pastVisibleItems = layoutManager.findFirstVisibleItemPosition();
+
+                    if(verif) { //Si on touche la fin de la page , plus besoin de verif , passage a une nouvelle page
+                        if( (visibleItemCount + pastVisibleItems) >= totalItemCount) {
+                            Log.i(TAG, "C'est la fin de la page ! ");
+                            verif = false;
+                            nbrPageParcouru ++;
+                            DataRequest(nbrPageParcouru);
+                        }
+                    }
+
+                }
+
+            }
+        });
 
 
         retrofit = new Retrofit.Builder()                                   //Configuration URL
                 .baseUrl("https://swapi.co/api/")                           // Url request
                 .addConverterFactory(GsonConverterFactory.create())         // Convertie la réponse
                 .build();
-        DataRequest();
+
+        verif = false;
+        nbrPageParcouru = 1;
+        DataRequest(nbrPageParcouru);
     }
 
-    private void DataRequest() { // Appel vers Api
+    private void DataRequest(int nbrPageParcouru ) { // Appel vers Api
         VehiclesApiService service = retrofit.create(VehiclesApiService.class);
-        Call<VehiclesReponse> VehicleReponseCall = service.ListVehicles();
+        Call<VehiclesReponse> VehiclesReponseCall = service.ListVehicles(nbrPageParcouru);
 
-        VehicleReponseCall.enqueue(new Callback<VehiclesReponse>() {
+        VehiclesReponseCall.enqueue(new Callback<VehiclesReponse>() {
             @Override
             public void onResponse(Call<VehiclesReponse> call, Response<VehiclesReponse> response) {
+                verif = true;
                 if(response.isSuccessful()) {                               // Si il y a réponse utilisable/bonne forme
 
-                    VehiclesReponse VehicleReponse = response.body();              // L'objet VehicleRepnse est remplie par le JSON
-                    ArrayList<Vehicles> listVehicle = VehicleReponse.getResults();    // On remplie ArrayList avec la réponse
+                    VehiclesReponse VehiclesReponse = response.body();              // L'objet VehiclesRepnse est remplie par le JSON
+                    ArrayList<Vehicles> listVehicles = VehiclesReponse.getResults();    // On remplie ArrayList avec la réponse
 
-                    listVehicleAdaptater.add(listVehicle);
+                    listVehiclesAdaptater.add(listVehicles);
 
-                    // Test récupération titre Vehicles
-//                    for (int i = 0; i < listVehicle.size(); i++) {
-//                        Vehicles Vehicles = listVehicle.get(i);
+                    // Test récupération titre Vehicless
+//                    for (int i = 0; i < listVehicles.size(); i++) {
+//                        Vehicles Vehicles = listVehicles.get(i);
 //                        Log.i(TAG, "Vehicles " + i + " : " + Vehicles.getTitle());
 //                    }
 
@@ -75,6 +107,7 @@ public class VehiclesActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<VehiclesReponse> call, Throwable t) {
+                verif = true;
                 Log.e(TAG, "Erreur Pas de Reponse : " + t.getMessage());
             }
         });
