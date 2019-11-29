@@ -1,5 +1,6 @@
 package mathieu.r.View;
 
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -27,6 +28,9 @@ public class SpeciesActivity extends AppCompatActivity {
 
     private ListSpeciesAdaptater listSpeciesAdaptater;
 
+    private int nbrPageParcouru;
+    private boolean verif;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,24 +41,52 @@ public class SpeciesActivity extends AppCompatActivity {
         listSpeciesAdaptater = new ListSpeciesAdaptater(this);
         recyclerView.setAdapter(listSpeciesAdaptater);
         recyclerView.setHasFixedSize(true);
-        GridLayoutManager layoutManager = new GridLayoutManager(this,2); // Choix du nombre de colonne
+        final GridLayoutManager layoutManager = new GridLayoutManager(this,2); // Choix du nombre de colonne
         recyclerView.setLayoutManager(layoutManager);
+
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() { // Check si il y a scroll , si oui on passe à la page suivante
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+
+                if (dy > 0) { //Check nbr d'object deja vu
+                    int visibleItemCount = layoutManager.getChildCount();
+                    int totalItemCount = layoutManager.getItemCount();
+                    int pastVisibleItems = layoutManager.findFirstVisibleItemPosition();
+
+                    if(verif) { //Si on touche la fin de la page , plus besoin de verif , passage a une nouvelle page
+                        if( (visibleItemCount + pastVisibleItems) >= totalItemCount) {
+                            Log.i(TAG, "C'est la fin de la page ! ");
+                            verif = false;
+                            nbrPageParcouru ++;
+                            DataRequest(nbrPageParcouru);
+                        }
+                    }
+
+                }
+
+            }
+        });
 
 
         retrofit = new Retrofit.Builder()                                   //Configuration URL
                 .baseUrl("https://swapi.co/api/")                           // Url request
                 .addConverterFactory(GsonConverterFactory.create())         // Convertie la réponse
                 .build();
-        DataRequest();
+
+        verif = false;
+        nbrPageParcouru = 1;
+        DataRequest(nbrPageParcouru);
     }
 
-    private void DataRequest() { // Appel vers Api
+    private void DataRequest(int nbrPageParcouru ) { // Appel vers Api
         SpeciesApiService service = retrofit.create(SpeciesApiService.class);
-        Call<SpeciesReponse> SpeciesReponseCall = service.ListSpecies();
+        Call<SpeciesReponse> SpeciesReponseCall = service.ListSpecies(nbrPageParcouru);
 
         SpeciesReponseCall.enqueue(new Callback<SpeciesReponse>() {
             @Override
             public void onResponse(Call<SpeciesReponse> call, Response<SpeciesReponse> response) {
+                verif = true;
                 if(response.isSuccessful()) {                               // Si il y a réponse utilisable/bonne forme
 
                     SpeciesReponse SpeciesReponse = response.body();              // L'objet SpeciesRepnse est remplie par le JSON
@@ -75,6 +107,7 @@ public class SpeciesActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<SpeciesReponse> call, Throwable t) {
+                verif = true;
                 Log.e(TAG, "Erreur Pas de Reponse : " + t.getMessage());
             }
         });
