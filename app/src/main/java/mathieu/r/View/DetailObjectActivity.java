@@ -12,6 +12,7 @@ import java.util.Set;
 import mathieu.r.Model.Film;
 import mathieu.r.Model.People;
 import mathieu.r.Model.Planets;
+import mathieu.r.Model.Species;
 import mathieu.r.R;
 import mathieu.r.View.Fragment.DetailObjectFragment;
 
@@ -38,9 +39,26 @@ public class DetailObjectActivity extends AppCompatActivity {
             Planets planets = (Planets) bundle.getSerializable("planets"); //Recuperation de l'object planets
             recuperationDataPlanetsActivity(planets);
         }
+        if(bundle.containsKey("species")) {
+            Species species = (Species) bundle.getSerializable("species"); //Recuperation de l'object planets
+            recuperationDataSpeciesActivity(species);
+        }
 
 
 
+    }
+
+    private void recuperationDataSpeciesActivity(Species species) {
+        DetailObjectFragment detailObjectFragment = new DetailObjectFragment(); // Instanciation du nouveau fragment
+        Bundle args = new Bundle();
+        args.putSerializable("species", species); //on remplie args
+        detailObjectFragment.setArguments(args);
+        Log.d(TAG,"Lancement de l'activity : " + species.getName());
+
+        // Lancement du fragment
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container, detailObjectFragment)
+                .commitNow();
     }
 
     private void recuperationDataPlanetsActivity(Planets planets) {
