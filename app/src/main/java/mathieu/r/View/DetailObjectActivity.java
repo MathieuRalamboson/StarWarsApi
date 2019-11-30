@@ -21,22 +21,25 @@ public class DetailObjectActivity extends AppCompatActivity {
         Intent intent = this.getIntent();
         Bundle bundle = intent.getExtras();
 
-        Film film = (Film) bundle.getSerializable("film"); //Recuperation de l'object film
+        if(bundle.containsKey("film")) {
+            Film film = (Film) bundle.getSerializable("film"); //Recuperation de l'object film
+            recuperationDataFilm(film);
+        }
 
+
+    }
+
+    private void recuperationDataFilm(Film film) {
         //Recuperer les data de l'activity parent et envoye vers le fragment avec le nom arg
         DetailObjectFragment detailObjectFragment = new DetailObjectFragment(); // Instanciation du nouveau fragment
         Bundle args = new Bundle();
         args.putSerializable("film", film); //on remplie args
         detailObjectFragment.setArguments(args);
-
-
         Log.d(TAG,"Lancement de l'activity : " + film.getTitle());
 
         // Lancement du fragment
-        if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
+        getSupportFragmentManager().beginTransaction()
                     .replace(R.id.container, detailObjectFragment)
                     .commitNow();
-        }
     }
 }
