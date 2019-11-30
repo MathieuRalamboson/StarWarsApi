@@ -6,7 +6,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import java.util.Collections;
+import java.util.Set;
+
 import mathieu.r.Model.Film;
+import mathieu.r.Model.People;
 import mathieu.r.R;
 import mathieu.r.View.Fragment.DetailObjectFragment;
 
@@ -21,16 +25,33 @@ public class DetailObjectActivity extends AppCompatActivity {
         Intent intent = this.getIntent();
         Bundle bundle = intent.getExtras();
 
-        if(bundle.containsKey("film")) {
+        if (bundle.containsKey("film")) { // En fonction du type de l'object Film/People...
             Film film = (Film) bundle.getSerializable("film"); //Recuperation de l'object film
             recuperationDataFilmActivity(film);
         }
+        if (bundle.containsKey("people")) {
+            People people = (People) bundle.getSerializable("people"); //Recuperation de l'object people
+            recuperationDataPeopleActivity(people);
+        }
+
 
 
     }
 
-    private void recuperationDataFilmActivity(Film film) {
-        //Recuperer les data de l'activity parent et envoye vers le fragment avec le nom arg
+    private void recuperationDataPeopleActivity(People people) { //Recuperer les data de l'activity parent et envoye vers le fragment avec le nom arg
+        DetailObjectFragment detailObjectFragment = new DetailObjectFragment(); // Instanciation du nouveau fragment
+        Bundle args = new Bundle();
+        args.putSerializable("people", people); //on remplie args
+        detailObjectFragment.setArguments(args);
+        Log.d(TAG,"Lancement de l'activity : " + people.getName());
+
+        // Lancement du fragment
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container, detailObjectFragment)
+                .commitNow();
+    }
+
+    private void recuperationDataFilmActivity(Film film) { //Recuperer les data de l'activity parent et envoye vers le fragment avec le nom arg
         DetailObjectFragment detailObjectFragment = new DetailObjectFragment(); // Instanciation du nouveau fragment
         Bundle args = new Bundle();
         args.putSerializable("film", film); //on remplie args

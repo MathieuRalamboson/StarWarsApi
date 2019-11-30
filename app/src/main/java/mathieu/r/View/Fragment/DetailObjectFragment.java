@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import mathieu.r.Model.Film;
+import mathieu.r.Model.People;
 import mathieu.r.R;
 
 import static android.support.constraint.Constraints.TAG;
@@ -40,13 +41,19 @@ public class DetailObjectFragment extends Fragment {
         Bundle args = getArguments(); // On les recupere
 
         if(args.containsKey("film")){ // Differenciation Categorie : Film/People...
-
             Film film = (Film) args.getSerializable("film"); // On les serialise dans un object film
             if(getArguments() != null) { // Si les arguments recu ne sont pas null
                 Log.d(TAG,"Lancement du fragment : " + film.getTitle());
 
                 textView.setText(film.getTitle()); // Setter textLayout
+            }
+        }
+        if(args.containsKey("people")){ // Differenciation Categorie : Film/People...
+            People people = (People) args.getSerializable("people"); // On les serialise dans un object film
+            if(getArguments() != null) { // Si les arguments recu ne sont pas null
+                Log.d(TAG,"Lancement du fragment : " + people.getName());
 
+                textView.setText(people.getName()); // Setter textLayout
             }
         }
 

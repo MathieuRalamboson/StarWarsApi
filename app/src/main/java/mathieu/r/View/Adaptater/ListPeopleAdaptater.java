@@ -1,7 +1,10 @@
 package mathieu.r.View.Adaptater;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +18,9 @@ import java.util.ArrayList;
 
 import mathieu.r.Model.People;
 import mathieu.r.R;
+import mathieu.r.View.DetailObjectActivity;
+
+import static android.support.constraint.Constraints.TAG;
 
 public class ListPeopleAdaptater extends RecyclerView.Adapter<ListPeopleAdaptater.ViewHolder> {
 
@@ -34,17 +40,32 @@ public class ListPeopleAdaptater extends RecyclerView.Adapter<ListPeopleAdaptate
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        People People = dataset.get(position);                                                          // Recuperation d'un People en fonction de son numero
-        holder.titreView.setText(People.getName());                                                  // Initialisation du titre dans l'objet People
+        final People people = dataset.get(position);                                                          // Recuperation d'un People en fonction de son numero
+        holder.titreView.setText(people.getName());                                                  // Initialisation du titre dans l'objet People
 
         Glide.with(context)                                                                         // Recuperation d'un image en fonction du numero
-                .load("https://starwars-visualguide.com/assets/img/characters/" + People.getNumber() + ".jpg")
+                .load("https://starwars-visualguide.com/assets/img/characters/" + people.getNumber() + ".jpg")
                 .centerCrop()                                                                       // URL de l'image
                 .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.imageView);
 
+        holder.imageView.setOnClickListener(new View.OnClickListener() { // Sur click d'un object
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG,"onClick: clicked on: " + people.getName());
 
+                // Appel DetailObjectActivity
+                Intent intent = new Intent(context, DetailObjectActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("people",people); // Passage object film au nouvel activity
+                intent.putExtras(bundle);
+
+                context.startActivity(intent);
+
+
+            }
+        });
     }
 
     @Override

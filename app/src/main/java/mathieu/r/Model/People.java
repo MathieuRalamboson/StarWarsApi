@@ -1,6 +1,8 @@
 package mathieu.r.Model;
 
-public class People {
+import java.io.Serializable;
+
+public class People implements Serializable {
 
     private Integer number;
     private String name;
