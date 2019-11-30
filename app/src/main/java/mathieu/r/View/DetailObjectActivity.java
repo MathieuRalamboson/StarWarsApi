@@ -23,13 +23,13 @@ public class DetailObjectActivity extends AppCompatActivity {
 
         if(bundle.containsKey("film")) {
             Film film = (Film) bundle.getSerializable("film"); //Recuperation de l'object film
-            recuperationDataFilm(film);
+            recuperationDataFilmActivity(film);
         }
 
 
     }
 
-    private void recuperationDataFilm(Film film) {
+    private void recuperationDataFilmActivity(Film film) {
         //Recuperer les data de l'activity parent et envoye vers le fragment avec le nom arg
         DetailObjectFragment detailObjectFragment = new DetailObjectFragment(); // Instanciation du nouveau fragment
         Bundle args = new Bundle();

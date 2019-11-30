@@ -38,14 +38,20 @@ public class DetailObjectFragment extends Fragment {
         ImageView imageView = v.findViewById(R.id.imageView); // Declaration image sur layout
 
         Bundle args = getArguments(); // On les recupere
-        Film film = (Film) args.getSerializable("film"); // On les serialise dans un object film
 
-        if(getArguments() != null) { // Si les arguments recu ne sont pas null
-            Log.d(TAG,"Lancement du fragment : " + film.getTitle());
+        if(args.containsKey("film")){ // Differenciation Categorie : Film/People...
 
-            textView.setText(film.getTitle()); // Setter textLayout
+            Film film = (Film) args.getSerializable("film"); // On les serialise dans un object film
+            if(getArguments() != null) { // Si les arguments recu ne sont pas null
+                Log.d(TAG,"Lancement du fragment : " + film.getTitle());
 
+                textView.setText(film.getTitle()); // Setter textLayout
+
+            }
         }
+
+
+
 
         return v;
     }
