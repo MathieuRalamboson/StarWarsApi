@@ -26,12 +26,9 @@ public class DetailObjectFragment extends Fragment {
         return new DetailObjectFragment();
     }
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.detail_object_fragment, container, false);
-
+    public void onCreate(@Nullable Bundle savedInstanceState) { // Instanciation object non graphique
+        super.onCreate(savedInstanceState);
         if(getArguments() != null) { // Si les arguments recu ne sont pas null
             Bundle args = getArguments(); // On les recupere
             Film film = (Film) args.getSerializable("film"); // On les serialise dans un object film
@@ -39,8 +36,17 @@ public class DetailObjectFragment extends Fragment {
             Log.d(TAG,"Lancement du fragment : " + film.getTitle());
 
         }
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) { // Instanciation object graphique vue etc
+        View v = inflater.inflate(R.layout.detail_object_fragment, container, false);
         return v;
     }
+
+
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {

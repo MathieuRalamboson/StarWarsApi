@@ -32,7 +32,8 @@ public class DetailObjectActivity extends AppCompatActivity {
 
         Log.d(TAG,"Lancement de l'activity : " + film.getTitle());
 
-        if (savedInstanceState == null) { // Lancement du fragment
+        // Lancement du fragment
+        if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.container, detailObjectFragment)
                     .commitNow();
