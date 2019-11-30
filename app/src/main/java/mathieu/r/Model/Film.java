@@ -1,6 +1,8 @@
 package mathieu.r.Model;
 
-public class Film {
+import java.io.Serializable;
+
+public class Film implements Serializable {
     private String title;           // Titre
     private Integer episode_id;      // Numero Episode
     private String opening_crawl;   // Desciption
@@ -83,5 +85,20 @@ public class Film {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    @Override
+    public String toString() {
+        return "Film{" +
+                "title='" + title + '\'' +
+                ", episode_id=" + episode_id +
+                ", opening_crawl='" + opening_crawl + '\'' +
+                ", director='" + director + '\'' +
+                ", producer='" + producer + '\'' +
+                ", release_date='" + release_date + '\'' +
+                ", created='" + created + '\'' +
+                ", edited='" + edited + '\'' +
+                ", url='" + url + '\'' +
+                '}';
     }
 }
