@@ -17,18 +17,24 @@ public class DetailObjectActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detail_object_activity);
 
-        //Recuperer les data de l'activity parent
+        //Recuperer les data de l'activity parent avec le nom bundle
         Intent intent = this.getIntent();
         Bundle bundle = intent.getExtras();
 
         Film film = (Film) bundle.getSerializable("film"); //Recuperation de l'object film
 
+        //Recuperer les data de l'activity parent et envoye vers le fragment avec le nom arg
+        DetailObjectFragment detailObjectFragment = new DetailObjectFragment(); // Instanciation du nouveau fragment
+        Bundle args = new Bundle();
+        args.putSerializable("film", film); //on remplie args
+        detailObjectFragment.setArguments(args);
+
+
         Log.d(TAG,"Lancement de l'activity : " + film.getTitle());
-        Toast.makeText(this,"Clicked on film : " + film.getTitle() ,Toast.LENGTH_SHORT).show();
 
         if (savedInstanceState == null) { // Lancement du fragment
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.container, DetailObjectFragment.newInstance())
+                    .replace(R.id.container, detailObjectFragment)
                     .commitNow();
         }
     }
