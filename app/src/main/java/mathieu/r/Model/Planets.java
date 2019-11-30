@@ -1,6 +1,8 @@
 package mathieu.r.Model;
 
-public class Planets {
+import java.io.Serializable;
+
+public class Planets implements Serializable {
     private Integer number;
     private String name;
     private String rotation_period;

@@ -1,6 +1,8 @@
 package mathieu.r.Model;
 
-public class Vehicles {
+import java.io.Serializable;
+
+public class Vehicles implements Serializable {
     private Integer number;
     private String name;
     private String model;

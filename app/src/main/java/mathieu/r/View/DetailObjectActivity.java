@@ -11,6 +11,7 @@ import java.util.Set;
 
 import mathieu.r.Model.Film;
 import mathieu.r.Model.People;
+import mathieu.r.Model.Planets;
 import mathieu.r.R;
 import mathieu.r.View.Fragment.DetailObjectFragment;
 
@@ -33,9 +34,26 @@ public class DetailObjectActivity extends AppCompatActivity {
             People people = (People) bundle.getSerializable("people"); //Recuperation de l'object people
             recuperationDataPeopleActivity(people);
         }
+        if(bundle.containsKey("planets")) {
+            Planets planets = (Planets) bundle.getSerializable("planets"); //Recuperation de l'object planets
+            recuperationDataPlanetsActivity(planets);
+        }
 
 
 
+    }
+
+    private void recuperationDataPlanetsActivity(Planets planets) {
+        DetailObjectFragment detailObjectFragment = new DetailObjectFragment(); // Instanciation du nouveau fragment
+        Bundle args = new Bundle();
+        args.putSerializable("planets", planets); //on remplie args
+        detailObjectFragment.setArguments(args);
+        Log.d(TAG,"Lancement de l'activity : " + planets.getName());
+
+        // Lancement du fragment
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container, detailObjectFragment)
+                .commitNow();
     }
 
     private void recuperationDataPeopleActivity(People people) { //Recuperer les data de l'activity parent et envoye vers le fragment avec le nom arg

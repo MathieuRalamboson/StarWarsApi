@@ -1,6 +1,8 @@
 package mathieu.r.Model;
 
-public class Species {
+import java.io.Serializable;
+
+public class Species implements Serializable {
     private Integer number;
     private String name;
     private String classification;

@@ -1,6 +1,8 @@
 package mathieu.r.Model;
 
-public class Starships {
+import java.io.Serializable;
+
+public class Starships implements Serializable {
     private Integer number;
     private String name;
     private String model;

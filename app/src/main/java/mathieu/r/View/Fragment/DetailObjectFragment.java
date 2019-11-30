@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import mathieu.r.Model.Film;
 import mathieu.r.Model.People;
+import mathieu.r.Model.Planets;
 import mathieu.r.R;
 
 import static android.support.constraint.Constraints.TAG;
@@ -54,6 +55,14 @@ public class DetailObjectFragment extends Fragment {
                 Log.d(TAG,"Lancement du fragment : " + people.getName());
 
                 textView.setText(people.getName()); // Setter textLayout
+            }
+        }
+        if(args.containsKey("planets")){ // Differenciation Categorie : Film/People...
+            Planets planets = (Planets) args.getSerializable("planets"); // On les serialise dans un object film
+            if(getArguments() != null) { // Si les arguments recu ne sont pas null
+                Log.d(TAG,"Lancement du fragment : " + planets.getName());
+
+                textView.setText(planets.getName()); // Setter textLayout
             }
         }
 
