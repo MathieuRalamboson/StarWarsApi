@@ -9,6 +9,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import mathieu.r.Model.Film;
@@ -26,23 +28,25 @@ public class DetailObjectFragment extends Fragment {
         return new DetailObjectFragment();
     }
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) { // Instanciation object non graphique
-        super.onCreate(savedInstanceState);
-        if(getArguments() != null) { // Si les arguments recu ne sont pas null
-            Bundle args = getArguments(); // On les recupere
-            Film film = (Film) args.getSerializable("film"); // On les serialise dans un object film
-
-            Log.d(TAG,"Lancement du fragment : " + film.getTitle());
-
-        }
-    }
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) { // Instanciation object graphique vue etc
         View v = inflater.inflate(R.layout.detail_object_fragment, container, false);
+
+        TextView textView = v.findViewById(R.id.titreView); // Declaration text sur layout
+        ImageView imageView = v.findViewById(R.id.imageView); // Declaration image sur layout
+
+        Bundle args = getArguments(); // On les recupere
+        Film film = (Film) args.getSerializable("film"); // On les serialise dans un object film
+
+        if(getArguments() != null) { // Si les arguments recu ne sont pas null
+            Log.d(TAG,"Lancement du fragment : " + film.getTitle());
+
+            textView.setText(film.getTitle()); // Setter textLayout
+
+        }
+
         return v;
     }
 
