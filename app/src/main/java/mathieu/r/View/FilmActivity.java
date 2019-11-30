@@ -1,14 +1,19 @@
 package mathieu.r.View;
 
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 
 import java.util.ArrayList;
 
 import mathieu.r.Controller.FilmApiService;
+import mathieu.r.DetailObjectFragment;
 import mathieu.r.Model.Film;
 import mathieu.r.Model.Response.FilmReponse;
 import mathieu.r.R;
@@ -47,6 +52,15 @@ public class FilmActivity extends AppCompatActivity {
                 .build();
         DataRequest();
     }
+
+    public void ChangeFragment(View view) {
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.replace(R.id.fragment_detail , new DetailObjectFragment());
+        ft.commit();
+    }
+
+
 
     private void DataRequest() { // Appel vers Api
         FilmApiService service = retrofit.create(FilmApiService.class);

@@ -1,20 +1,28 @@
 package mathieu.r.View.Adaptater;
 
 import android.content.Context;
+
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import java.util.ArrayList;
 
+import mathieu.r.DetailObjectFragment;
 import mathieu.r.Model.Film;
 import mathieu.r.R;
+import mathieu.r.View.FilmActivity;
+
+import static android.support.constraint.Constraints.TAG;
 
 public class ListFilmAdaptater extends RecyclerView.Adapter<ListFilmAdaptater.ViewHolder> {
 
@@ -34,7 +42,7 @@ public class ListFilmAdaptater extends RecyclerView.Adapter<ListFilmAdaptater.Vi
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Film film = dataset.get(position);                                                          // Recuperation d'un film en fonction de son numero
+        final Film film = dataset.get(position);                                                          // Recuperation d'un film en fonction de son numero
         holder.titreView.setText(film.getTitle());                                                  // Initialisation du titre dans l'objet Film
 
         Glide.with(context)                                                                         // Recuperation d'un image en fonction du numero
@@ -43,6 +51,16 @@ public class ListFilmAdaptater extends RecyclerView.Adapter<ListFilmAdaptater.Vi
                 .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.imageView);
+
+        holder.imageView.setOnClickListener(new View.OnClickListener() { // Sur click image
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG,"onClick: clicked on: " + film.getTitle());
+                Toast.makeText(context,"Clicked on Pokemon : "+film.getTitle(),Toast.LENGTH_SHORT).show();
+                FilmActivity filmActivity = new FilmActivity();
+                filmActivity.ChangeFragment(v); // on affiche un fragment
+            }
+        });
 
 
     }
@@ -57,7 +75,7 @@ public class ListFilmAdaptater extends RecyclerView.Adapter<ListFilmAdaptater.Vi
         notifyDataSetChanged();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
         private ImageView imageView;
         private TextView titreView;
