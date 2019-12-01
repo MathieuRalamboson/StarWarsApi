@@ -45,29 +45,27 @@ public class DetailObjectFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) { // Instanciation object graphique vue etc
         View v = inflater.inflate(R.layout.detail_object_fragment, container, false);
 
-        TextView textView = v.findViewById(R.id.titreView); // Declaration text sur layout
-        ImageView imageView = v.findViewById(R.id.imageView); // Declaration image sur layout
 
         Bundle args = getArguments(); // On les recupere
 
         if(args.containsKey("film")){ // Differenciation Categorie : Film...
-            affichageDetailFilm(args,textView,imageView);
+            affichageDetailFilm(args,v);
 
         }
         if(args.containsKey("people")){ // Differenciation Categorie : People...
-            affichageDetailPeople(args,textView,imageView);
+            affichageDetailPeople(args,v);
         }
         if(args.containsKey("planets")){ // Differenciation Categorie : etc...
-            affichageDetailPlanets(args,textView,imageView);
+            affichageDetailPlanets(args,v);
         }
         if(args.containsKey("species")){ // Differenciation Categorie : etc...
-            affichageDetailSpecies(args,textView,imageView);
+            affichageDetailSpecies(args,v);
         }
         if(args.containsKey("starships")){ // Differenciation Categorie : etc...
-            affichageDetailStarships(args,textView,imageView);
+            affichageDetailStarships(args,v);
         }
         if(args.containsKey("vehicles")){ // Differenciation Categorie : etc...
-            affichageDetailVehicles(args,textView,imageView);
+            affichageDetailVehicles(args,v);
         }
 
 
@@ -76,7 +74,10 @@ public class DetailObjectFragment extends Fragment {
         return v;
     }
 
-    private void affichageDetailVehicles(Bundle args, TextView textView, ImageView imageView) {
+    private void affichageDetailVehicles(Bundle args, View v) {
+        TextView textView = v.findViewById(R.id.titreView); // Declaration text sur layout
+        ImageView imageView = v.findViewById(R.id.imageView); // Declaration image sur layout
+
         Vehicles vehicles = (Vehicles) args.getSerializable("vehicles"); // On les serialise dans un object film
         if(getArguments() != null) { // Si les arguments recu ne sont pas null
             Log.d(TAG,"Lancement du fragment : " + vehicles.getName());
@@ -88,7 +89,10 @@ public class DetailObjectFragment extends Fragment {
         }
     }
 
-    private void affichageDetailStarships(Bundle args, TextView textView, ImageView imageView) {
+    private void affichageDetailStarships(Bundle args, View v) {
+        TextView textView = v.findViewById(R.id.titreView); // Declaration text sur layout
+        ImageView imageView = v.findViewById(R.id.imageView); // Declaration image sur layout
+
         Starships starships = (Starships) args.getSerializable("starships"); // On les serialise dans un object film
         if(getArguments() != null) { // Si les arguments recu ne sont pas null
             Log.d(TAG,"Lancement du fragment : " + starships.getName());
@@ -100,7 +104,10 @@ public class DetailObjectFragment extends Fragment {
         }
     }
 
-    private void affichageDetailSpecies(Bundle args, TextView textView, ImageView imageView) {
+    private void affichageDetailSpecies(Bundle args, View v) {
+        TextView textView = v.findViewById(R.id.titreView); // Declaration text sur layout
+        ImageView imageView = v.findViewById(R.id.imageView); // Declaration image sur layout
+
         Species species = (Species) args.getSerializable("species"); // On les serialise dans un object film
         if(getArguments() != null) { // Si les arguments recu ne sont pas null
             Log.d(TAG,"Lancement du fragment : " + species.getName());
@@ -112,7 +119,10 @@ public class DetailObjectFragment extends Fragment {
         }
     }
 
-    private void affichageDetailPlanets(Bundle args, TextView textView, ImageView imageView) {
+    private void affichageDetailPlanets(Bundle args, View v) {
+        TextView textView = v.findViewById(R.id.titreView); // Declaration text sur layout
+        ImageView imageView = v.findViewById(R.id.imageView); // Declaration image sur layout
+
         Planets planets = (Planets) args.getSerializable("planets"); // On les serialise dans un object film
         if(getArguments() != null) { // Si les arguments recu ne sont pas null
             Log.d(TAG,"Lancement du fragment : " + planets.getName());
@@ -124,7 +134,10 @@ public class DetailObjectFragment extends Fragment {
         }
     }
 
-    private void affichageDetailPeople(Bundle args, TextView textView, ImageView imageView) {
+    private void affichageDetailPeople(Bundle args, View v) {
+        TextView textView = v.findViewById(R.id.titreView); // Declaration text sur layout
+        ImageView imageView = v.findViewById(R.id.imageView); // Declaration image sur layout
+
         People people = (People) args.getSerializable("people"); // On les serialise dans un object film
         if(getArguments() != null) { // Si les arguments recu ne sont pas null
             Log.d(TAG,"Lancement du fragment : " + people.getName());
@@ -136,7 +149,10 @@ public class DetailObjectFragment extends Fragment {
         }
     }
 
-    private void affichageDetailFilm(Bundle args, TextView textView, ImageView imageView) {
+    private void affichageDetailFilm(Bundle args, View v) {
+        TextView textView = v.findViewById(R.id.titreView); // Declaration text sur layout
+        ImageView imageView = v.findViewById(R.id.imageView); // Declaration image sur layout
+
         Film film = (Film) args.getSerializable("film"); // On les serialise dans un object film
         if(getArguments() != null) { // Si les arguments recu ne sont pas null
             Log.d(TAG,"Lancement du fragment : " + film.getTitle());
