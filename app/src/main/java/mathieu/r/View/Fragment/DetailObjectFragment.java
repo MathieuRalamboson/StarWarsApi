@@ -11,13 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.squareup.picasso.Picasso;
-
-import java.net.URI;
 
 import mathieu.r.Model.Film;
 import mathieu.r.Model.People;
@@ -26,8 +21,6 @@ import mathieu.r.Model.Species;
 import mathieu.r.Model.Starships;
 import mathieu.r.Model.Vehicles;
 import mathieu.r.R;
-
-import static android.support.constraint.Constraints.TAG;
 
 
 public class DetailObjectFragment extends Fragment {
@@ -48,28 +41,28 @@ public class DetailObjectFragment extends Fragment {
         Bundle args = getArguments(); // On les recupere
 
         if(args.containsKey("film")){ // Differenciation Categorie : Film...
-            v = inflater.inflate(R.layout.detail_object_fragment, container, false); // Choix du layout
+            v = inflater.inflate(R.layout.detail_object_fragment_film, container, false); // Choix du layout
             affichageDetailFilm(args,v);
 
         }
         if(args.containsKey("people")){ // Differenciation Categorie : People...
-            v = inflater.inflate(R.layout.detail_object_fragment, container, false); // Choix du layout
+            v = inflater.inflate(R.layout.detail_object_fragment_film, container, false); // Choix du layout
             affichageDetailPeople(args,v);
         }
         if(args.containsKey("planets")){ // Differenciation Categorie : etc...
-            v = inflater.inflate(R.layout.detail_object_fragment, container, false); // Choix du layout
+            v = inflater.inflate(R.layout.detail_object_fragment_film, container, false); // Choix du layout
             affichageDetailPlanets(args,v);
         }
         if(args.containsKey("species")){ // Differenciation Categorie : etc...
-            v = inflater.inflate(R.layout.detail_object_fragment, container, false); // Choix du layout
+            v = inflater.inflate(R.layout.detail_object_fragment_film, container, false); // Choix du layout
             affichageDetailSpecies(args,v);
         }
         if(args.containsKey("starships")){ // Differenciation Categorie : etc...
-            v = inflater.inflate(R.layout.detail_object_fragment, container, false); // Choix du layout
+            v = inflater.inflate(R.layout.detail_object_fragment_film, container, false); // Choix du layout
             affichageDetailStarships(args,v);
         }
         if(args.containsKey("vehicles")){ // Differenciation Categorie : etc...
-            v = inflater.inflate(R.layout.detail_object_fragment, container, false); // Choix du layout
+            v = inflater.inflate(R.layout.detail_object_fragment_film, container, false); // Choix du layout
             affichageDetailVehicles(args,v);
         }
 
