@@ -46,7 +46,7 @@ public class DetailObjectFragment extends Fragment {
 
         }
         if(args.containsKey("people")){ // Differenciation Categorie : People...
-            v = inflater.inflate(R.layout.detail_object_fragment_film, container, false); // Choix du layout
+            v = inflater.inflate(R.layout.detail_object_fragment_people, container, false); // Choix du layout
             affichageDetailPeople(args,v);
         }
         if(args.containsKey("planets")){ // Differenciation Categorie : etc...
@@ -132,12 +132,29 @@ public class DetailObjectFragment extends Fragment {
     private void affichageDetailPeople(Bundle args, View v) {
         TextView textView = v.findViewById(R.id.titreView); // Declaration text sur layout
         ImageView imageView = v.findViewById(R.id.imageView); // Declaration image sur layout
+        TextView height = v.findViewById(R.id.height); // Declaration text sur layout
+        TextView mass = v.findViewById(R.id.mass); // Declaration text sur layout
+        TextView hair_color = v.findViewById(R.id.hair_color); // Declaration text sur layout
+        TextView skin_color = v.findViewById(R.id.skin_color); // Declaration text sur layout
+        TextView eye_color = v.findViewById(R.id.eye_color); // Declaration text sur layout
+        TextView birth_year = v.findViewById(R.id.birth_year); // Declaration text sur layout
+        TextView gender = v.findViewById(R.id.gender); // Declaration text sur layout
+        TextView homeworld = v.findViewById(R.id.homeworld); // Declaration text sur layout
 
         People people = (People) args.getSerializable("people"); // On les serialise dans un object film
         if(getArguments() != null) { // Si les arguments recu ne sont pas null
             Log.d(TAG,"Lancement du fragment : " + people.getName());
 
             textView.setText(people.getName()); // Setter textLayout
+            height.setText(people.getHeight()); // Setter textLayout
+            mass.setText(people.getMass()); // Setter textLayout
+            hair_color.setText(people.getHair_color()); // Setter textLayout
+            skin_color.setText(people.getSkin_color()); // Setter textLayout
+            eye_color.setText(people.getEye_color()); // Setter textLayout
+            birth_year.setText(people.getBirth_year()); // Setter textLayout
+            gender.setText(people.getGender()); // Setter textLayout
+            homeworld.setText(people.getHomeworld()); // Setter textLayout
+
             Picasso.with(getContext()) // Setter imageLayout
                     .load("https://starwars-visualguide.com/assets/img/characters/" + people.getNumber() + ".jpg")
                     .into(imageView);
