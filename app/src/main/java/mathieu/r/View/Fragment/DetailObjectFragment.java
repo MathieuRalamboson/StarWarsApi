@@ -87,12 +87,36 @@ public class DetailObjectFragment extends Fragment {
     private void affichageDetailStarships(Bundle args, View v) {
         TextView textView = v.findViewById(R.id.titreView); // Declaration text sur layout
         ImageView imageView = v.findViewById(R.id.imageView); // Declaration image sur layout
+        TextView model = v.findViewById(R.id.model); // Declaration text sur layout
+        TextView manufacturer = v.findViewById(R.id.manufacturer); // Declaration text sur layout
+        TextView cost_in_credits = v.findViewById(R.id.cost_in_credits); // Declaration text sur layout
+        TextView length = v.findViewById(R.id.length); // Declaration text sur layout
+        TextView max_atmosphering_speed = v.findViewById(R.id.max_atmosphering_speed); // Declaration text sur layout
+        TextView passengers = v.findViewById(R.id.passengers); // Declaration text sur layout
+        TextView cargo_capacity = v.findViewById(R.id.cargo_capacity); // Declaration text sur layout
+        TextView consumables = v.findViewById(R.id.consumables); // Declaration text sur layout
+        TextView hyperdrive_rating = v.findViewById(R.id.hyperdrive_rating); // Declaration text sur layout
+        TextView MGLT = v.findViewById(R.id.MGLT); // Declaration text sur layout
+        TextView starship_class = v.findViewById(R.id.starship_class); // Declaration text sur layout
+
 
         Starships starships = (Starships) args.getSerializable("starships"); // On les serialise dans un object film
         if(getArguments() != null) { // Si les arguments recu ne sont pas null
             Log.d(TAG,"Lancement du fragment : " + starships.getName());
 
             textView.setText(starships.getName()); // Setter textLayout
+            model.setText(starships.getModel()); // Setter textLayout
+            manufacturer.setText(starships.getManufacturer()); // Setter textLayout
+            cost_in_credits.setText(starships.getCost_in_credits()); // Setter textLayout
+            length.setText(starships.getLength()); // Setter textLayout
+            max_atmosphering_speed.setText(starships.getMax_atmosphering_speed()); // Setter textLayout
+            passengers.setText(starships.getPassengers()); // Setter textLayout
+            cargo_capacity.setText(starships.getCargo_capacity()); // Setter textLayout
+            consumables.setText(starships.getConsumables()); // Setter textLayout
+            hyperdrive_rating.setText(starships.getHyperdrive_rating()); // Setter textLayout
+            MGLT.setText(starships.getMGLT()); // Setter textLayout
+            starship_class.setText(starships.getStarship_class()); // Setter textLayout
+
             Picasso.with(getContext()) // Setter imageLayout
                     .load("https://starwars-visualguide.com/assets/img/starships/" + starships.getNumber() + ".jpg")
                     .into(imageView);
