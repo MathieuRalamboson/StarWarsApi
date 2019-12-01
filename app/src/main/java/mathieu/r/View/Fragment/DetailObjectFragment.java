@@ -13,6 +13,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.squareup.picasso.Picasso;
+
+import java.net.URI;
+
 import mathieu.r.Model.Film;
 import mathieu.r.Model.People;
 import mathieu.r.Model.Planets;
@@ -50,6 +56,10 @@ public class DetailObjectFragment extends Fragment {
                 Log.d(TAG,"Lancement du fragment : " + film.getTitle());
 
                 textView.setText(film.getTitle()); // Setter textLayout
+                Picasso.with(getContext())
+                        .load("https://starwars-visualguide.com/assets/img/films/" + film.getEpisode_id() + ".jpg")
+                        .into(imageView);
+
             }
         }
         if(args.containsKey("people")){ // Differenciation Categorie : Film/People...
