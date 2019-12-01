@@ -72,12 +72,31 @@ public class DetailObjectFragment extends Fragment {
     private void affichageDetailVehicles(Bundle args, View v) {
         TextView textView = v.findViewById(R.id.titreView); // Declaration text sur layout
         ImageView imageView = v.findViewById(R.id.imageView); // Declaration image sur layout
+        TextView model = v.findViewById(R.id.model); // Declaration text sur layout
+        TextView manufacturer = v.findViewById(R.id.manufacturer); // Declaration text sur layout
+        TextView cost_in_credits = v.findViewById(R.id.cost_in_credits); // Declaration text sur layout
+        TextView max_atmosphering_speed = v.findViewById(R.id.max_atmosphering_speed); // Declaration text sur layout
+        TextView crew = v.findViewById(R.id.crew); // Declaration text sur layout
+        TextView passengers = v.findViewById(R.id.passengers); // Declaration text sur layout
+        TextView cargo_capacity = v.findViewById(R.id.cargo_capacity); // Declaration text sur layout
+        TextView consumables = v.findViewById(R.id.consumables); // Declaration text sur layout
+        TextView vehicle_class = v.findViewById(R.id.vehicle_class); // Declaration text sur layout
 
         Vehicles vehicles = (Vehicles) args.getSerializable("vehicles"); // On les serialise dans un object film
         if(getArguments() != null) { // Si les arguments recu ne sont pas null
             Log.d(TAG,"Lancement du fragment : " + vehicles.getName());
 
             textView.setText(vehicles.getName()); // Setter textLayout
+            model.setText(vehicles.getModel()); // Setter textLayout
+            manufacturer.setText(vehicles.getManufacturer()); // Setter textLayout
+            cost_in_credits.setText(vehicles.getCost_in_credits()); // Setter textLayout
+            max_atmosphering_speed.setText(vehicles.getMax_atmosphering_speed()); // Setter textLayout
+            crew.setText(vehicles.getCrew()); // Setter textLayout
+            passengers.setText(vehicles.getPassengers()); // Setter textLayout
+            cargo_capacity.setText(vehicles.getCargo_capacity()); // Setter textLayout
+            consumables.setText(vehicles.getConsumables()); // Setter textLayout
+            vehicle_class.setText(vehicles.getVehicle_class()); // Setter textLayout
+
             Picasso.with(getContext()) // Setter imageLayout
                     .load("https://starwars-visualguide.com/assets/img/vehicles/" + vehicles.getNumber() + ".jpg")
                     .into(imageView);
