@@ -1,4 +1,4 @@
-package mathieu.r.View;
+package mathieu.r.View.Activity;
 
 import android.content.Context;
 import android.content.Intent;

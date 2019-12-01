@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 import mathieu.r.Model.People;
 import mathieu.r.R;
-import mathieu.r.View.DetailObjectActivity;
+import mathieu.r.View.Activity.DetailObjectActivity;
 
 import static android.support.constraint.Constraints.TAG;
 

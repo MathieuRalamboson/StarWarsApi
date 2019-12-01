@@ -1,4 +1,4 @@
-package mathieu.r.View;
+package mathieu.r.View.Activity;
 
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -9,24 +9,24 @@ import android.util.Log;
 
 import java.util.ArrayList;
 
-import mathieu.r.Controller.VehiclesApiService;
-import mathieu.r.Model.Vehicles;
-import mathieu.r.Model.Response.VehiclesReponse;
+import mathieu.r.Controller.SpeciesApiService;
+import mathieu.r.Model.Species;
+import mathieu.r.Model.Response.SpeciesReponse;
 import mathieu.r.R;
-import mathieu.r.View.Adaptater.ListVehiclesAdaptater;
+import mathieu.r.View.Adaptater.ListSpeciesAdaptater;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class VehiclesActivity extends AppCompatActivity {
+public class SpeciesActivity extends AppCompatActivity {
 
-    private static final String TAG = "Vehicles";
+    private static final String TAG = "Species";
     private Retrofit retrofit;
     private RecyclerView recyclerView;
 
-    private ListVehiclesAdaptater listVehiclesAdaptater;
+    private ListSpeciesAdaptater listSpeciesAdaptater;
 
     private int nbrPageParcouru;
     private boolean verif;
@@ -38,8 +38,8 @@ public class VehiclesActivity extends AppCompatActivity {
 
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);      // Configuration RecycleView
-        listVehiclesAdaptater = new ListVehiclesAdaptater(this);
-        recyclerView.setAdapter(listVehiclesAdaptater);
+        listSpeciesAdaptater = new ListSpeciesAdaptater(this);
+        recyclerView.setAdapter(listSpeciesAdaptater);
         recyclerView.setHasFixedSize(true);
         final GridLayoutManager layoutManager = new GridLayoutManager(this,2); // Choix du nombre de colonne
         recyclerView.setLayoutManager(layoutManager);
@@ -80,24 +80,24 @@ public class VehiclesActivity extends AppCompatActivity {
     }
 
     private void DataRequest(int nbrPageParcouru ) { // Appel vers Api
-        VehiclesApiService service = retrofit.create(VehiclesApiService.class);
-        Call<VehiclesReponse> VehiclesReponseCall = service.ListVehicles(nbrPageParcouru);
+        SpeciesApiService service = retrofit.create(SpeciesApiService.class);
+        Call<SpeciesReponse> SpeciesReponseCall = service.ListSpecies(nbrPageParcouru);
 
-        VehiclesReponseCall.enqueue(new Callback<VehiclesReponse>() {
+        SpeciesReponseCall.enqueue(new Callback<SpeciesReponse>() {
             @Override
-            public void onResponse(Call<VehiclesReponse> call, Response<VehiclesReponse> response) {
+            public void onResponse(Call<SpeciesReponse> call, Response<SpeciesReponse> response) {
                 verif = true;
                 if(response.isSuccessful()) {                               // Si il y a réponse utilisable/bonne forme
 
-                    VehiclesReponse VehiclesReponse = response.body();              // L'objet VehiclesRepnse est remplie par le JSON
-                    ArrayList<Vehicles> listVehicles = VehiclesReponse.getResults();    // On remplie ArrayList avec la réponse
+                    SpeciesReponse SpeciesReponse = response.body();              // L'objet SpeciesRepnse est remplie par le JSON
+                    ArrayList<Species> listSpecies = SpeciesReponse.getResults();    // On remplie ArrayList avec la réponse
 
-                    listVehiclesAdaptater.add(listVehicles);
+                    listSpeciesAdaptater.add(listSpecies);
 
-                    // Test récupération titre Vehicless
-//                    for (int i = 0; i < listVehicles.size(); i++) {
-//                        Vehicles Vehicles = listVehicles.get(i);
-//                        Log.i(TAG, "Vehicles " + i + " : " + Vehicles.getTitle());
+                    // Test récupération titre Speciess
+//                    for (int i = 0; i < listSpecies.size(); i++) {
+//                        Species Species = listSpecies.get(i);
+//                        Log.i(TAG, "Species " + i + " : " + Species.getTitle());
 //                    }
 
                 }else{                                                      // Sinon
@@ -106,7 +106,7 @@ public class VehiclesActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<VehiclesReponse> call, Throwable t) {
+            public void onFailure(Call<SpeciesReponse> call, Throwable t) {
                 verif = true;
                 Log.e(TAG, "Erreur Pas de Reponse : " + t.getMessage());
             }

@@ -1,4 +1,4 @@
-package mathieu.r.View;
+package mathieu.r.View.Activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

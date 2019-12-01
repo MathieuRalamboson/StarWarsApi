@@ -1,4 +1,4 @@
-package mathieu.r.View;
+package mathieu.r.View.Activity;
 
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -9,24 +9,24 @@ import android.util.Log;
 
 import java.util.ArrayList;
 
-import mathieu.r.Controller.StarshipsApiService;
-import mathieu.r.Model.Starships;
-import mathieu.r.Model.Response.StarshipsReponse;
+import mathieu.r.Controller.VehiclesApiService;
+import mathieu.r.Model.Vehicles;
+import mathieu.r.Model.Response.VehiclesReponse;
 import mathieu.r.R;
-import mathieu.r.View.Adaptater.ListStarshipsAdaptater;
+import mathieu.r.View.Adaptater.ListVehiclesAdaptater;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class StarshipsActivity extends AppCompatActivity {
+public class VehiclesActivity extends AppCompatActivity {
 
-    private static final String TAG = "Starships";
+    private static final String TAG = "Vehicles";
     private Retrofit retrofit;
     private RecyclerView recyclerView;
 
-    private ListStarshipsAdaptater listStarshipsAdaptater;
+    private ListVehiclesAdaptater listVehiclesAdaptater;
 
     private int nbrPageParcouru;
     private boolean verif;
@@ -38,8 +38,8 @@ public class StarshipsActivity extends AppCompatActivity {
 
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);      // Configuration RecycleView
-        listStarshipsAdaptater = new ListStarshipsAdaptater(this);
-        recyclerView.setAdapter(listStarshipsAdaptater);
+        listVehiclesAdaptater = new ListVehiclesAdaptater(this);
+        recyclerView.setAdapter(listVehiclesAdaptater);
         recyclerView.setHasFixedSize(true);
         final GridLayoutManager layoutManager = new GridLayoutManager(this,2); // Choix du nombre de colonne
         recyclerView.setLayoutManager(layoutManager);
@@ -80,24 +80,24 @@ public class StarshipsActivity extends AppCompatActivity {
     }
 
     private void DataRequest(int nbrPageParcouru ) { // Appel vers Api
-        StarshipsApiService service = retrofit.create(StarshipsApiService.class);
-        Call<StarshipsReponse> StarshipsReponseCall = service.ListStarships(nbrPageParcouru);
+        VehiclesApiService service = retrofit.create(VehiclesApiService.class);
+        Call<VehiclesReponse> VehiclesReponseCall = service.ListVehicles(nbrPageParcouru);
 
-        StarshipsReponseCall.enqueue(new Callback<StarshipsReponse>() {
+        VehiclesReponseCall.enqueue(new Callback<VehiclesReponse>() {
             @Override
-            public void onResponse(Call<StarshipsReponse> call, Response<StarshipsReponse> response) {
+            public void onResponse(Call<VehiclesReponse> call, Response<VehiclesReponse> response) {
                 verif = true;
                 if(response.isSuccessful()) {                               // Si il y a réponse utilisable/bonne forme
 
-                    StarshipsReponse StarshipsReponse = response.body();              // L'objet StarshipsRepnse est remplie par le JSON
-                    ArrayList<Starships> listStarships = StarshipsReponse.getResults();    // On remplie ArrayList avec la réponse
+                    VehiclesReponse VehiclesReponse = response.body();              // L'objet VehiclesRepnse est remplie par le JSON
+                    ArrayList<Vehicles> listVehicles = VehiclesReponse.getResults();    // On remplie ArrayList avec la réponse
 
-                    listStarshipsAdaptater.add(listStarships);
+                    listVehiclesAdaptater.add(listVehicles);
 
-                    // Test récupération titre Starshipss
-//                    for (int i = 0; i < listStarships.size(); i++) {
-//                        Starships Starships = listStarships.get(i);
-//                        Log.i(TAG, "Starships " + i + " : " + Starships.getTitle());
+                    // Test récupération titre Vehicless
+//                    for (int i = 0; i < listVehicles.size(); i++) {
+//                        Vehicles Vehicles = listVehicles.get(i);
+//                        Log.i(TAG, "Vehicles " + i + " : " + Vehicles.getTitle());
 //                    }
 
                 }else{                                                      // Sinon
@@ -106,7 +106,7 @@ public class StarshipsActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<StarshipsReponse> call, Throwable t) {
+            public void onFailure(Call<VehiclesReponse> call, Throwable t) {
                 verif = true;
                 Log.e(TAG, "Erreur Pas de Reponse : " + t.getMessage());
             }

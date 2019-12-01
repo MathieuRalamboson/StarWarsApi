@@ -1,4 +1,4 @@
-package mathieu.r.View;
+package mathieu.r.View.Activity;
 
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -9,24 +9,24 @@ import android.util.Log;
 
 import java.util.ArrayList;
 
-import mathieu.r.Controller.PeopleApiService;
-import mathieu.r.Model.People;
-import mathieu.r.Model.Response.PeopleReponse;
+import mathieu.r.Controller.PlanetsApiService;
+import mathieu.r.Model.Planets;
+import mathieu.r.Model.Response.PlanetsReponse;
 import mathieu.r.R;
-import mathieu.r.View.Adaptater.ListPeopleAdaptater;
+import mathieu.r.View.Adaptater.ListPlanetsAdaptater;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class PeopleActivity extends AppCompatActivity {
+public class PlanetsActivity extends AppCompatActivity {
 
-    private static final String TAG = "People";
+    private static final String TAG = "Planets";
     private Retrofit retrofit;
     private RecyclerView recyclerView;
 
-    private ListPeopleAdaptater listPeopleAdaptater;
+    private ListPlanetsAdaptater listPlanetsAdaptater;
 
     private int nbrPageParcouru;
     private boolean verif;
@@ -38,8 +38,8 @@ public class PeopleActivity extends AppCompatActivity {
 
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);      // Configuration RecycleView
-        listPeopleAdaptater = new ListPeopleAdaptater(this);
-        recyclerView.setAdapter(listPeopleAdaptater);
+        listPlanetsAdaptater = new ListPlanetsAdaptater(this);
+        recyclerView.setAdapter(listPlanetsAdaptater);
         recyclerView.setHasFixedSize(true);
         final GridLayoutManager layoutManager = new GridLayoutManager(this,2); // Choix du nombre de colonne
         recyclerView.setLayoutManager(layoutManager);
@@ -80,24 +80,24 @@ public class PeopleActivity extends AppCompatActivity {
     }
 
     private void DataRequest(int nbrPageParcouru ) { // Appel vers Api
-        PeopleApiService service = retrofit.create(PeopleApiService.class);
-        Call<PeopleReponse> PeopleReponseCall = service.ListPeople(nbrPageParcouru);
+        PlanetsApiService service = retrofit.create(PlanetsApiService.class);
+        Call<PlanetsReponse> PlanetsReponseCall = service.ListPlanets(nbrPageParcouru);
 
-        PeopleReponseCall.enqueue(new Callback<PeopleReponse>() {
+        PlanetsReponseCall.enqueue(new Callback<PlanetsReponse>() {
             @Override
-            public void onResponse(Call<PeopleReponse> call, Response<PeopleReponse> response) {
+            public void onResponse(Call<PlanetsReponse> call, Response<PlanetsReponse> response) {
                 verif = true;
                 if(response.isSuccessful()) {                               // Si il y a réponse utilisable/bonne forme
 
-                    PeopleReponse PeopleReponse = response.body();              // L'objet PeopleRepnse est remplie par le JSON
-                    ArrayList<People> listPeople = PeopleReponse.getResults();    // On remplie ArrayList avec la réponse
+                    PlanetsReponse PlanetsReponse = response.body();              // L'objet PlanetsRepnse est remplie par le JSON
+                    ArrayList<Planets> listPlanets = PlanetsReponse.getResults();    // On remplie ArrayList avec la réponse
 
-                    listPeopleAdaptater.add(listPeople);
+                    listPlanetsAdaptater.add(listPlanets);
 
-                    // Test récupération titre Peoples
-//                    for (int i = 0; i < listPeople.size(); i++) {
-//                        People People = listPeople.get(i);
-//                        Log.i(TAG, "People " + i + " : " + People.getTitle());
+                    // Test récupération titre Planetss
+//                    for (int i = 0; i < listPlanets.size(); i++) {
+//                        Planets Planets = listPlanets.get(i);
+//                        Log.i(TAG, "Planets " + i + " : " + Planets.getTitle());
 //                    }
 
                 }else{                                                      // Sinon
@@ -106,7 +106,7 @@ public class PeopleActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<PeopleReponse> call, Throwable t) {
+            public void onFailure(Call<PlanetsReponse> call, Throwable t) {
                 verif = true;
                 Log.e(TAG, "Erreur Pas de Reponse : " + t.getMessage());
             }

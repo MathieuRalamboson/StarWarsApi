@@ -1,4 +1,4 @@
-package mathieu.r.View;
+package mathieu.r.View.Activity;
 
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -9,24 +9,24 @@ import android.util.Log;
 
 import java.util.ArrayList;
 
-import mathieu.r.Controller.PlanetsApiService;
-import mathieu.r.Model.Planets;
-import mathieu.r.Model.Response.PlanetsReponse;
+import mathieu.r.Controller.StarshipsApiService;
+import mathieu.r.Model.Starships;
+import mathieu.r.Model.Response.StarshipsReponse;
 import mathieu.r.R;
-import mathieu.r.View.Adaptater.ListPlanetsAdaptater;
+import mathieu.r.View.Adaptater.ListStarshipsAdaptater;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class PlanetsActivity extends AppCompatActivity {
+public class StarshipsActivity extends AppCompatActivity {
 
-    private static final String TAG = "Planets";
+    private static final String TAG = "Starships";
     private Retrofit retrofit;
     private RecyclerView recyclerView;
 
-    private ListPlanetsAdaptater listPlanetsAdaptater;
+    private ListStarshipsAdaptater listStarshipsAdaptater;
 
     private int nbrPageParcouru;
     private boolean verif;
@@ -38,8 +38,8 @@ public class PlanetsActivity extends AppCompatActivity {
 
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);      // Configuration RecycleView
-        listPlanetsAdaptater = new ListPlanetsAdaptater(this);
-        recyclerView.setAdapter(listPlanetsAdaptater);
+        listStarshipsAdaptater = new ListStarshipsAdaptater(this);
+        recyclerView.setAdapter(listStarshipsAdaptater);
         recyclerView.setHasFixedSize(true);
         final GridLayoutManager layoutManager = new GridLayoutManager(this,2); // Choix du nombre de colonne
         recyclerView.setLayoutManager(layoutManager);
@@ -80,24 +80,24 @@ public class PlanetsActivity extends AppCompatActivity {
     }
 
     private void DataRequest(int nbrPageParcouru ) { // Appel vers Api
-        PlanetsApiService service = retrofit.create(PlanetsApiService.class);
-        Call<PlanetsReponse> PlanetsReponseCall = service.ListPlanets(nbrPageParcouru);
+        StarshipsApiService service = retrofit.create(StarshipsApiService.class);
+        Call<StarshipsReponse> StarshipsReponseCall = service.ListStarships(nbrPageParcouru);
 
-        PlanetsReponseCall.enqueue(new Callback<PlanetsReponse>() {
+        StarshipsReponseCall.enqueue(new Callback<StarshipsReponse>() {
             @Override
-            public void onResponse(Call<PlanetsReponse> call, Response<PlanetsReponse> response) {
+            public void onResponse(Call<StarshipsReponse> call, Response<StarshipsReponse> response) {
                 verif = true;
                 if(response.isSuccessful()) {                               // Si il y a réponse utilisable/bonne forme
 
-                    PlanetsReponse PlanetsReponse = response.body();              // L'objet PlanetsRepnse est remplie par le JSON
-                    ArrayList<Planets> listPlanets = PlanetsReponse.getResults();    // On remplie ArrayList avec la réponse
+                    StarshipsReponse StarshipsReponse = response.body();              // L'objet StarshipsRepnse est remplie par le JSON
+                    ArrayList<Starships> listStarships = StarshipsReponse.getResults();    // On remplie ArrayList avec la réponse
 
-                    listPlanetsAdaptater.add(listPlanets);
+                    listStarshipsAdaptater.add(listStarships);
 
-                    // Test récupération titre Planetss
-//                    for (int i = 0; i < listPlanets.size(); i++) {
-//                        Planets Planets = listPlanets.get(i);
-//                        Log.i(TAG, "Planets " + i + " : " + Planets.getTitle());
+                    // Test récupération titre Starshipss
+//                    for (int i = 0; i < listStarships.size(); i++) {
+//                        Starships Starships = listStarships.get(i);
+//                        Log.i(TAG, "Starships " + i + " : " + Starships.getTitle());
 //                    }
 
                 }else{                                                      // Sinon
@@ -106,7 +106,7 @@ public class PlanetsActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<PlanetsReponse> call, Throwable t) {
+            public void onFailure(Call<StarshipsReponse> call, Throwable t) {
                 verif = true;
                 Log.e(TAG, "Erreur Pas de Reponse : " + t.getMessage());
             }
