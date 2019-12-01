@@ -50,72 +50,24 @@ public class DetailObjectFragment extends Fragment {
 
         Bundle args = getArguments(); // On les recupere
 
-        if(args.containsKey("film")){ // Differenciation Categorie : Film/People...
-            Film film = (Film) args.getSerializable("film"); // On les serialise dans un object film
-            if(getArguments() != null) { // Si les arguments recu ne sont pas null
-                Log.d(TAG,"Lancement du fragment : " + film.getTitle());
+        if(args.containsKey("film")){ // Differenciation Categorie : Film...
+            affichageDetailFilm(args,textView,imageView);
 
-                textView.setText(film.getTitle()); // Setter textLayout
-                Picasso.with(getContext()) // Setter imageLayout
-                        .load("https://starwars-visualguide.com/assets/img/films/" + film.getEpisode_id() + ".jpg")
-                        .into(imageView);
-
-            }
         }
-        if(args.containsKey("people")){ // Differenciation Categorie : Film/People...
-            People people = (People) args.getSerializable("people"); // On les serialise dans un object film
-            if(getArguments() != null) { // Si les arguments recu ne sont pas null
-                Log.d(TAG,"Lancement du fragment : " + people.getName());
-
-                textView.setText(people.getName()); // Setter textLayout
-                Picasso.with(getContext()) // Setter imageLayout
-                        .load("https://starwars-visualguide.com/assets/img/characters/" + people.getNumber() + ".jpg")
-                        .into(imageView);
-            }
+        if(args.containsKey("people")){ // Differenciation Categorie : People...
+            affichageDetailPeople(args,textView,imageView);
         }
-        if(args.containsKey("planets")){ // Differenciation Categorie : Film/People...
-            Planets planets = (Planets) args.getSerializable("planets"); // On les serialise dans un object film
-            if(getArguments() != null) { // Si les arguments recu ne sont pas null
-                Log.d(TAG,"Lancement du fragment : " + planets.getName());
-
-                textView.setText(planets.getName()); // Setter textLayout
-                Picasso.with(getContext()) // Setter imageLayout
-                        .load("https://starwars-visualguide.com/assets/img/planets/" + planets.getNumber() + ".jpg")
-                        .into(imageView);
-            }
+        if(args.containsKey("planets")){ // Differenciation Categorie : etc...
+            affichageDetailPlanets(args,textView,imageView);
         }
-        if(args.containsKey("species")){ // Differenciation Categorie : Film/People...
-            Species species = (Species) args.getSerializable("species"); // On les serialise dans un object film
-            if(getArguments() != null) { // Si les arguments recu ne sont pas null
-                Log.d(TAG,"Lancement du fragment : " + species.getName());
-
-                textView.setText(species.getName()); // Setter textLayout
-                Picasso.with(getContext()) // Setter imageLayout
-                        .load("https://starwars-visualguide.com/assets/img/species/" + species.getNumber() + ".jpg")
-                        .into(imageView);
-            }
+        if(args.containsKey("species")){ // Differenciation Categorie : etc...
+            affichageDetailSpecies(args,textView,imageView);
         }
-        if(args.containsKey("starships")){ // Differenciation Categorie : Film/People...
-            Starships starships = (Starships) args.getSerializable("starships"); // On les serialise dans un object film
-            if(getArguments() != null) { // Si les arguments recu ne sont pas null
-                Log.d(TAG,"Lancement du fragment : " + starships.getName());
-
-                textView.setText(starships.getName()); // Setter textLayout
-                Picasso.with(getContext()) // Setter imageLayout
-                        .load("https://starwars-visualguide.com/assets/img/starships/" + starships.getNumber() + ".jpg")
-                        .into(imageView);
-            }
+        if(args.containsKey("starships")){ // Differenciation Categorie : etc...
+            affichageDetailStarships(args,textView,imageView);
         }
-        if(args.containsKey("vehicles")){ // Differenciation Categorie : Film/People...
-            Vehicles vehicles = (Vehicles) args.getSerializable("vehicles"); // On les serialise dans un object film
-            if(getArguments() != null) { // Si les arguments recu ne sont pas null
-                Log.d(TAG,"Lancement du fragment : " + vehicles.getName());
-
-                textView.setText(vehicles.getName()); // Setter textLayout
-                Picasso.with(getContext()) // Setter imageLayout
-                        .load("https://starwars-visualguide.com/assets/img/vehicles/" + vehicles.getNumber() + ".jpg")
-                        .into(imageView);
-            }
+        if(args.containsKey("vehicles")){ // Differenciation Categorie : etc...
+            affichageDetailVehicles(args,textView,imageView);
         }
 
 
@@ -124,6 +76,77 @@ public class DetailObjectFragment extends Fragment {
         return v;
     }
 
+    private void affichageDetailVehicles(Bundle args, TextView textView, ImageView imageView) {
+        Vehicles vehicles = (Vehicles) args.getSerializable("vehicles"); // On les serialise dans un object film
+        if(getArguments() != null) { // Si les arguments recu ne sont pas null
+            Log.d(TAG,"Lancement du fragment : " + vehicles.getName());
+
+            textView.setText(vehicles.getName()); // Setter textLayout
+            Picasso.with(getContext()) // Setter imageLayout
+                    .load("https://starwars-visualguide.com/assets/img/vehicles/" + vehicles.getNumber() + ".jpg")
+                    .into(imageView);
+        }
+    }
+
+    private void affichageDetailStarships(Bundle args, TextView textView, ImageView imageView) {
+        Starships starships = (Starships) args.getSerializable("starships"); // On les serialise dans un object film
+        if(getArguments() != null) { // Si les arguments recu ne sont pas null
+            Log.d(TAG,"Lancement du fragment : " + starships.getName());
+
+            textView.setText(starships.getName()); // Setter textLayout
+            Picasso.with(getContext()) // Setter imageLayout
+                    .load("https://starwars-visualguide.com/assets/img/starships/" + starships.getNumber() + ".jpg")
+                    .into(imageView);
+        }
+    }
+
+    private void affichageDetailSpecies(Bundle args, TextView textView, ImageView imageView) {
+        Species species = (Species) args.getSerializable("species"); // On les serialise dans un object film
+        if(getArguments() != null) { // Si les arguments recu ne sont pas null
+            Log.d(TAG,"Lancement du fragment : " + species.getName());
+
+            textView.setText(species.getName()); // Setter textLayout
+            Picasso.with(getContext()) // Setter imageLayout
+                    .load("https://starwars-visualguide.com/assets/img/species/" + species.getNumber() + ".jpg")
+                    .into(imageView);
+        }
+    }
+
+    private void affichageDetailPlanets(Bundle args, TextView textView, ImageView imageView) {
+        Planets planets = (Planets) args.getSerializable("planets"); // On les serialise dans un object film
+        if(getArguments() != null) { // Si les arguments recu ne sont pas null
+            Log.d(TAG,"Lancement du fragment : " + planets.getName());
+
+            textView.setText(planets.getName()); // Setter textLayout
+            Picasso.with(getContext()) // Setter imageLayout
+                    .load("https://starwars-visualguide.com/assets/img/planets/" + planets.getNumber() + ".jpg")
+                    .into(imageView);
+        }
+    }
+
+    private void affichageDetailPeople(Bundle args, TextView textView, ImageView imageView) {
+        People people = (People) args.getSerializable("people"); // On les serialise dans un object film
+        if(getArguments() != null) { // Si les arguments recu ne sont pas null
+            Log.d(TAG,"Lancement du fragment : " + people.getName());
+
+            textView.setText(people.getName()); // Setter textLayout
+            Picasso.with(getContext()) // Setter imageLayout
+                    .load("https://starwars-visualguide.com/assets/img/characters/" + people.getNumber() + ".jpg")
+                    .into(imageView);
+        }
+    }
+
+    private void affichageDetailFilm(Bundle args, TextView textView, ImageView imageView) {
+        Film film = (Film) args.getSerializable("film"); // On les serialise dans un object film
+        if(getArguments() != null) { // Si les arguments recu ne sont pas null
+            Log.d(TAG,"Lancement du fragment : " + film.getTitle());
+
+            textView.setText(film.getTitle()); // Setter textLayout
+            Picasso.with(getContext()) // Setter imageLayout
+                    .load("https://starwars-visualguide.com/assets/img/films/" + film.getEpisode_id() + ".jpg")
+                    .into(imageView);
+        }
+    }
 
 
     @Override
