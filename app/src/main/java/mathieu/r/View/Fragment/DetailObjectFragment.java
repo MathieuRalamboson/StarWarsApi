@@ -50,19 +50,19 @@ public class DetailObjectFragment extends Fragment {
             affichageDetailPeople(args,v);
         }
         if(args.containsKey("planets")){ // Differenciation Categorie : etc...
-            v = inflater.inflate(R.layout.detail_object_fragment_film, container, false); // Choix du layout
+            v = inflater.inflate(R.layout.detail_object_fragment_planets, container, false); // Choix du layout
             affichageDetailPlanets(args,v);
         }
         if(args.containsKey("species")){ // Differenciation Categorie : etc...
-            v = inflater.inflate(R.layout.detail_object_fragment_film, container, false); // Choix du layout
+            v = inflater.inflate(R.layout.detail_object_fragment_species, container, false); // Choix du layout
             affichageDetailSpecies(args,v);
         }
         if(args.containsKey("starships")){ // Differenciation Categorie : etc...
-            v = inflater.inflate(R.layout.detail_object_fragment_film, container, false); // Choix du layout
+            v = inflater.inflate(R.layout.detail_object_fragment_starships, container, false); // Choix du layout
             affichageDetailStarships(args,v);
         }
         if(args.containsKey("vehicles")){ // Differenciation Categorie : etc...
-            v = inflater.inflate(R.layout.detail_object_fragment_film, container, false); // Choix du layout
+            v = inflater.inflate(R.layout.detail_object_fragment_vehicles, container, false); // Choix du layout
             affichageDetailVehicles(args,v);
         }
 
@@ -102,12 +102,30 @@ public class DetailObjectFragment extends Fragment {
     private void affichageDetailSpecies(Bundle args, View v) {
         TextView textView = v.findViewById(R.id.titreView); // Declaration text sur layout
         ImageView imageView = v.findViewById(R.id.imageView); // Declaration image sur layout
+        TextView classification = v.findViewById(R.id.classification); // Declaration text sur layout
+        TextView designation = v.findViewById(R.id.designation); // Declaration text sur layout
+        TextView average_height = v.findViewById(R.id.average_height); // Declaration text sur layout
+        TextView skin_colors = v.findViewById(R.id.skin_colors); // Declaration text sur layout
+        TextView hair_colors = v.findViewById(R.id.hair_colors); // Declaration text sur layout
+        TextView eye_colors = v.findViewById(R.id.eye_colors); // Declaration text sur layout
+        TextView average_lifespan = v.findViewById(R.id.average_lifespan); // Declaration text sur layout
+        TextView homeworld = v.findViewById(R.id.homeworld); // Declaration text sur layout
+        TextView language = v.findViewById(R.id.language); // Declaration text sur layout
 
         Species species = (Species) args.getSerializable("species"); // On les serialise dans un object film
         if(getArguments() != null) { // Si les arguments recu ne sont pas null
             Log.d(TAG,"Lancement du fragment : " + species.getName());
 
-            textView.setText(species.getName()); // Setter textLayout
+            classification.setText(species.getName()); // Setter textLayout
+            designation.setText(species.getDesignation()); // Setter textLayout
+            average_height.setText(species.getAverage_height()); // Setter textLayout
+            skin_colors.setText(species.getSkin_colors()); // Setter textLayout
+            hair_colors.setText(species.getHair_colors()); // Setter textLayout
+            eye_colors.setText(species.getEye_colors()); // Setter textLayout
+            average_lifespan.setText(species.getAverage_lifespan()); // Setter textLayout
+            homeworld.setText(species.getHomeworld()); // Setter textLayout
+            language.setText(species.getLanguage()); // Setter textLayout
+
             Picasso.with(getContext()) // Setter imageLayout
                     .load("https://starwars-visualguide.com/assets/img/species/" + species.getNumber() + ".jpg")
                     .into(imageView);
@@ -117,12 +135,28 @@ public class DetailObjectFragment extends Fragment {
     private void affichageDetailPlanets(Bundle args, View v) {
         TextView textView = v.findViewById(R.id.titreView); // Declaration text sur layout
         ImageView imageView = v.findViewById(R.id.imageView); // Declaration image sur layout
+        TextView rotation_period = v.findViewById(R.id.rotation_period); // Declaration text sur layout
+        TextView orbital_period = v.findViewById(R.id.orbital_period); // Declaration text sur layout
+        TextView diameter = v.findViewById(R.id.diameter); // Declaration text sur layout
+        TextView climate = v.findViewById(R.id.climate); // Declaration text sur layout
+        TextView gravity = v.findViewById(R.id.gravity); // Declaration text sur layout
+        TextView terrain = v.findViewById(R.id.terrain); // Declaration text sur layout
+        TextView surface_water = v.findViewById(R.id.surface_water); // Declaration text sur layout
+        TextView population = v.findViewById(R.id.population); // Declaration text sur layout
 
         Planets planets = (Planets) args.getSerializable("planets"); // On les serialise dans un object film
         if(getArguments() != null) { // Si les arguments recu ne sont pas null
             Log.d(TAG,"Lancement du fragment : " + planets.getName());
 
             textView.setText(planets.getName()); // Setter textLayout
+            rotation_period.setText(planets.getRotation_period()); // Setter textLayout
+            orbital_period.setText(planets.getOrbital_period()); // Setter textLayout
+            diameter.setText(planets.getDiameter()); // Setter textLayout
+            climate.setText(planets.getClimate()); // Setter textLayout
+            gravity.setText(planets.getGravity()); // Setter textLayout
+            terrain.setText(planets.getTerrain()); // Setter textLayout
+            surface_water.setText(planets.getSurface_water()); // Setter textLayout
+            population.setText(planets.getPopulation()); // Setter textLayout
             Picasso.with(getContext()) // Setter imageLayout
                     .load("https://starwars-visualguide.com/assets/img/planets/" + planets.getNumber() + ".jpg")
                     .into(imageView);

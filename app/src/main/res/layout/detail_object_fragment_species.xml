@@ -68,10 +68,10 @@
                 android:text="hair_colors"
                 android:gravity="center_horizontal" />
             <TextView
-                android:id="@+id/eye_color"
+                android:id="@+id/eye_colors"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="eye_color"
+                android:text="eye_colors"
                 android:gravity="center_horizontal" />
             <TextView
                 android:id="@+id/average_lifespan"
