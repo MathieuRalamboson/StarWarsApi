@@ -43,35 +43,37 @@ public class DetailObjectFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) { // Instanciation object graphique vue etc
-        View v = inflater.inflate(R.layout.detail_object_fragment, container, false);
 
-
+        View v = null;
         Bundle args = getArguments(); // On les recupere
 
         if(args.containsKey("film")){ // Differenciation Categorie : Film...
+            v = inflater.inflate(R.layout.detail_object_fragment, container, false); // Choix du layout
             affichageDetailFilm(args,v);
 
         }
         if(args.containsKey("people")){ // Differenciation Categorie : People...
+            v = inflater.inflate(R.layout.detail_object_fragment, container, false); // Choix du layout
             affichageDetailPeople(args,v);
         }
         if(args.containsKey("planets")){ // Differenciation Categorie : etc...
+            v = inflater.inflate(R.layout.detail_object_fragment, container, false); // Choix du layout
             affichageDetailPlanets(args,v);
         }
         if(args.containsKey("species")){ // Differenciation Categorie : etc...
+            v = inflater.inflate(R.layout.detail_object_fragment, container, false); // Choix du layout
             affichageDetailSpecies(args,v);
         }
         if(args.containsKey("starships")){ // Differenciation Categorie : etc...
+            v = inflater.inflate(R.layout.detail_object_fragment, container, false); // Choix du layout
             affichageDetailStarships(args,v);
         }
         if(args.containsKey("vehicles")){ // Differenciation Categorie : etc...
+            v = inflater.inflate(R.layout.detail_object_fragment, container, false); // Choix du layout
             affichageDetailVehicles(args,v);
         }
 
-
-
-
-        return v;
+        return v; // Return du layout
     }
 
     private void affichageDetailVehicles(Bundle args, View v) {
@@ -152,12 +154,21 @@ public class DetailObjectFragment extends Fragment {
     private void affichageDetailFilm(Bundle args, View v) {
         TextView textView = v.findViewById(R.id.titreView); // Declaration text sur layout
         ImageView imageView = v.findViewById(R.id.imageView); // Declaration image sur layout
+        TextView opening_crawl = v.findViewById(R.id.opening_crawl); // Declaration text sur layout
+        TextView director = v.findViewById(R.id.director); // Declaration text sur layout
+        TextView producer = v.findViewById(R.id.producer); // Declaration text sur layout
+        TextView release_date = v.findViewById(R.id.release_date); // Declaration text sur layout
 
         Film film = (Film) args.getSerializable("film"); // On les serialise dans un object film
         if(getArguments() != null) { // Si les arguments recu ne sont pas null
             Log.d(TAG,"Lancement du fragment : " + film.getTitle());
 
             textView.setText(film.getTitle()); // Setter textLayout
+            opening_crawl.setText(film.getOpening_crawl()); // Setter
+            director.setText(film.getDirector()); // Setter
+            producer.setText(film.getProducer()); // Setter
+            release_date.setText(film.getRelease_date()); // Setter
+
             Picasso.with(getContext()) // Setter imageLayout
                     .load("https://starwars-visualguide.com/assets/img/films/" + film.getEpisode_id() + ".jpg")
                     .into(imageView);
