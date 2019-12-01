@@ -18,6 +18,7 @@ import mathieu.r.Model.People;
 import mathieu.r.Model.Planets;
 import mathieu.r.Model.Species;
 import mathieu.r.Model.Starships;
+import mathieu.r.Model.Vehicles;
 import mathieu.r.R;
 
 import static android.support.constraint.Constraints.TAG;
@@ -81,6 +82,14 @@ public class DetailObjectFragment extends Fragment {
                 Log.d(TAG,"Lancement du fragment : " + starships.getName());
 
                 textView.setText(starships.getName()); // Setter textLayout
+            }
+        }
+        if(args.containsKey("vehicles")){ // Differenciation Categorie : Film/People...
+            Vehicles vehicles = (Vehicles) args.getSerializable("vehicles"); // On les serialise dans un object film
+            if(getArguments() != null) { // Si les arguments recu ne sont pas null
+                Log.d(TAG,"Lancement du fragment : " + vehicles.getName());
+
+                textView.setText(vehicles.getName()); // Setter textLayout
             }
         }
 

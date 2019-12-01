@@ -14,6 +14,7 @@ import mathieu.r.Model.People;
 import mathieu.r.Model.Planets;
 import mathieu.r.Model.Species;
 import mathieu.r.Model.Starships;
+import mathieu.r.Model.Vehicles;
 import mathieu.r.R;
 import mathieu.r.View.Fragment.DetailObjectFragment;
 
@@ -48,8 +49,25 @@ public class DetailObjectActivity extends AppCompatActivity {
             Starships starships = (Starships) bundle.getSerializable("starships"); //Recuperation de l'object planets
             recuperationDataStarshipsActivity(starships);
         }
+        if(bundle.containsKey("vehicles")) {
+            Vehicles vehicles = (Vehicles) bundle.getSerializable("vehicles"); //Recuperation de l'object planets
+            recuperationDataVehiclesActivity(vehicles);
+        }
 
 
+    }
+
+    private void recuperationDataVehiclesActivity(Vehicles vehicles) {
+        DetailObjectFragment detailObjectFragment = new DetailObjectFragment(); // Instanciation du nouveau fragment
+        Bundle args = new Bundle();
+        args.putSerializable("vehicles", vehicles); //on remplie args
+        detailObjectFragment.setArguments(args);
+        Log.d(TAG,"Lancement de l'activity : " + vehicles.getName());
+
+        // Lancement du fragment
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container, detailObjectFragment)
+                .commitNow();
     }
 
     private void recuperationDataStarshipsActivity(Starships starships) {

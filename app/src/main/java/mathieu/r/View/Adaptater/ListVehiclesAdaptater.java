@@ -1,7 +1,10 @@
 package mathieu.r.View.Adaptater;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +18,9 @@ import java.util.ArrayList;
 
 import mathieu.r.Model.Vehicles;
 import mathieu.r.R;
+import mathieu.r.View.DetailObjectActivity;
+
+import static android.support.constraint.Constraints.TAG;
 
 public class ListVehiclesAdaptater extends RecyclerView.Adapter<ListVehiclesAdaptater.ViewHolder> {
 
@@ -34,16 +40,32 @@ public class ListVehiclesAdaptater extends RecyclerView.Adapter<ListVehiclesAdap
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Vehicles Vehicle = dataset.get(position);                                                          // Recuperation d'un Vehicles en fonction de son numero
-        holder.titreView.setText(Vehicle.getName());                                                  // Initialisation du titre dans l'objet Vehicles
+        final Vehicles vehicles = dataset.get(position);                                                          // Recuperation d'un Vehicles en fonction de son numero
+        holder.titreView.setText(vehicles.getName());                                                  // Initialisation du titre dans l'objet Vehicles
 
         Glide.with(context)                                                                         // Recuperation d'un image en fonction du numero
-                .load("https://starwars-visualguide.com/assets/img/vehicles/" + Vehicle.getNumber() + ".jpg")
+                .load("https://starwars-visualguide.com/assets/img/vehicles/" + vehicles.getNumber() + ".jpg")
                 .centerCrop()                                                                       // URL de l'image
                 .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.imageView);
 
+        holder.imageView.setOnClickListener(new View.OnClickListener() { // Sur click d'un object
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG,"onClick: clicked on: " + vehicles.getName());
+
+                // Appel DetailObjectActivity
+                Intent intent = new Intent(context, DetailObjectActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("vehicles",vehicles); // Passage object film au nouvel activity
+                intent.putExtras(bundle);
+
+                context.startActivity(intent);
+
+
+            }
+        });
 
     }
 
