@@ -13,6 +13,7 @@ import mathieu.r.Model.Film;
 import mathieu.r.Model.People;
 import mathieu.r.Model.Planets;
 import mathieu.r.Model.Species;
+import mathieu.r.Model.Starships;
 import mathieu.r.R;
 import mathieu.r.View.Fragment.DetailObjectFragment;
 
@@ -43,9 +44,25 @@ public class DetailObjectActivity extends AppCompatActivity {
             Species species = (Species) bundle.getSerializable("species"); //Recuperation de l'object planets
             recuperationDataSpeciesActivity(species);
         }
+        if(bundle.containsKey("starships")) {
+            Starships starships = (Starships) bundle.getSerializable("starships"); //Recuperation de l'object planets
+            recuperationDataStarshipsActivity(starships);
+        }
 
 
+    }
 
+    private void recuperationDataStarshipsActivity(Starships starships) {
+        DetailObjectFragment detailObjectFragment = new DetailObjectFragment(); // Instanciation du nouveau fragment
+        Bundle args = new Bundle();
+        args.putSerializable("starships", starships); //on remplie args
+        detailObjectFragment.setArguments(args);
+        Log.d(TAG,"Lancement de l'activity : " + starships.getName());
+
+        // Lancement du fragment
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container, detailObjectFragment)
+                .commitNow();
     }
 
     private void recuperationDataSpeciesActivity(Species species) {

@@ -1,7 +1,10 @@
 package mathieu.r.View.Adaptater;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +18,9 @@ import java.util.ArrayList;
 
 import mathieu.r.Model.Starships;
 import mathieu.r.R;
+import mathieu.r.View.DetailObjectActivity;
+
+import static android.support.constraint.Constraints.TAG;
 
 public class ListStarshipsAdaptater extends RecyclerView.Adapter<ListStarshipsAdaptater.ViewHolder> {
 
@@ -34,15 +40,32 @@ public class ListStarshipsAdaptater extends RecyclerView.Adapter<ListStarshipsAd
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Starships Starships = dataset.get(position);                                                          // Recuperation d'un Starships en fonction de son numero
-        holder.titreView.setText(Starships.getName());                                                  // Initialisation du titre dans l'objet Starships
+        final Starships starships = dataset.get(position);                                                          // Recuperation d'un Starships en fonction de son numero
+        holder.titreView.setText(starships.getName());                                                  // Initialisation du titre dans l'objet Starships
 
         Glide.with(context)                                                                         // Recuperation d'un image en fonction du numero
-                .load("https://starwars-visualguide.com/assets/img/starships/" + Starships.getNumber() + ".jpg")
+                .load("https://starwars-visualguide.com/assets/img/starships/" + starships.getNumber() + ".jpg")
                 .centerCrop()                                                                       // URL de l'image
                 .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.imageView);
+
+        holder.imageView.setOnClickListener(new View.OnClickListener() { // Sur click d'un object
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG,"onClick: clicked on: " + starships.getName());
+
+                // Appel DetailObjectActivity
+                Intent intent = new Intent(context, DetailObjectActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("starships",starships); // Passage object film au nouvel activity
+                intent.putExtras(bundle);
+
+                context.startActivity(intent);
+
+
+            }
+        });
 
 
     }
