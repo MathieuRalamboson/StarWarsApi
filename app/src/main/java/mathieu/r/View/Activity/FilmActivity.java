@@ -67,13 +67,7 @@ public class FilmActivity extends AppCompatActivity {
                     ArrayList<Film> listFilm = filmReponse.getResults();    // On remplie ArrayList avec la réponse
 
                     listFilmAdaptater.add(listFilm);
-
-                    // Test récupération titre films
-//                    for (int i = 0; i < listFilm.size(); i++) {
-//                        Film film = listFilm.get(i);
-//                        Log.i(TAG, "Film " + i + " : " + film.getTitle());
-//                    }
-
+                    
                 }else{                                                      // Sinon
                     Log.e(TAG, "Erreur Reponse : " + response.errorBody());
                 }

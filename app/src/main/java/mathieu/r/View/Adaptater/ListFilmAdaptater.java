@@ -38,13 +38,6 @@ public class ListFilmAdaptater extends RecyclerView.Adapter<ListFilmAdaptater.Vi
         datasetFull = new ArrayList<>(dataset);
     }
 
-//    public ListFilmAdaptater(Context context) {
-//        this.context = context;
-//        dataset = new ArrayList<>();
-//        datasetFull = new ArrayList<>(dataset);
-//    }
-
-
     @Override
     public ViewHolder onCreateViewHolder( ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recycler_view,parent,false);
@@ -76,11 +69,8 @@ public class ListFilmAdaptater extends RecyclerView.Adapter<ListFilmAdaptater.Vi
 
                 context.startActivity(intent);
 
-
             }
         });
-
-
     }
 
     @Override
