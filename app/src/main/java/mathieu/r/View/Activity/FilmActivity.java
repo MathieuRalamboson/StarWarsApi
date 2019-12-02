@@ -4,9 +4,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.inputmethod.EditorInfo;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 import mathieu.r.Controller.FilmApiService;
@@ -27,6 +31,7 @@ public class FilmActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
 
     private ListFilmAdaptater listFilmAdaptater;
+    private ArrayList<Film> dataset;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,5 +85,31 @@ public class FilmActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) searchItem.getActionView();
+
+        searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                listFilmAdaptater.getFilter().filter(newText);
+                return false;
+            }
+        });
+
+        return true;
     }
 }

@@ -8,6 +8,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,6 +17,8 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 import mathieu.r.Model.Film;
 import mathieu.r.R;
@@ -22,15 +26,24 @@ import mathieu.r.View.Activity.DetailObjectActivity;
 
 import static android.support.constraint.Constraints.TAG;
 
-public class ListFilmAdaptater extends RecyclerView.Adapter<ListFilmAdaptater.ViewHolder> {
+public class ListFilmAdaptater extends RecyclerView.Adapter<ListFilmAdaptater.ViewHolder> implements Filterable {
 
     private ArrayList<Film> dataset;                                                                //List d'object Film
+    private ArrayList<Film> datasetFull;                                                                //List d'object Film
     private Context context;
 
     public ListFilmAdaptater(Context context) {
         this.context = context;
         dataset = new ArrayList<>();
+        datasetFull = new ArrayList<>(dataset);
     }
+
+//    public ListFilmAdaptater(Context context) {
+//        this.context = context;
+//        dataset = new ArrayList<>();
+//        datasetFull = new ArrayList<>(dataset);
+//    }
+
 
     @Override
     public ViewHolder onCreateViewHolder( ViewGroup parent, int viewType) {
@@ -77,8 +90,43 @@ public class ListFilmAdaptater extends RecyclerView.Adapter<ListFilmAdaptater.Vi
 
     public void add(ArrayList<Film> listFilm) {                                                     // Ajout d'un object dans la liste
         dataset.addAll(listFilm);
+        datasetFull = new ArrayList<>(listFilm);
         notifyDataSetChanged();
     }
+
+    @Override
+    public Filter getFilter() {
+        return filter;
+    }
+    private Filter filter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<Film> filteredList = new ArrayList<>();
+
+            if(constraint == null || constraint.length() == 0) { // Rien ecris dans la barre
+                filteredList.addAll(datasetFull);
+            } else { // Quelque chose ecrit dans la barre de recherche
+                String filterPattern = constraint.toString().toLowerCase().trim(); // Créé une nouvel string sans espace, en minuscule
+
+                for(Film item : datasetFull) { // on parcours notre list
+                    if (item.getTitle().toLowerCase().contains(filterPattern)) { // Si l'item courant == taper dans la bare de recherche
+                        filteredList.add(item);
+                    }
+                }
+
+            }
+            FilterResults results = new FilterResults();
+            results.values = filteredList;
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            dataset.clear();
+            dataset.addAll((List) results.values);
+            notifyDataSetChanged();
+        }
+    };
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
