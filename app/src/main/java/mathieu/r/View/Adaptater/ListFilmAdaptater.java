@@ -34,8 +34,8 @@ public class ListFilmAdaptater extends RecyclerView.Adapter<ListFilmAdaptater.Vi
 
     public ListFilmAdaptater(Context context) {
         this.context = context;
-        dataset = new ArrayList<>();
-        datasetFull = new ArrayList<>(dataset);
+        dataset = new ArrayList<>();datasetFull = new ArrayList<>(dataset);
+
     }
 
     @Override

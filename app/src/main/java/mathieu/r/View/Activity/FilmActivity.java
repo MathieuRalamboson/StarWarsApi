@@ -67,7 +67,7 @@ public class FilmActivity extends AppCompatActivity {
                     ArrayList<Film> listFilm = filmReponse.getResults();    // On remplie ArrayList avec la réponse
 
                     listFilmAdaptater.add(listFilm);
-                    
+
                 }else{                                                      // Sinon
                     Log.e(TAG, "Erreur Reponse : " + response.errorBody());
                 }
