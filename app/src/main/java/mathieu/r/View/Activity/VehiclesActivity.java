@@ -5,7 +5,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.inputmethod.EditorInfo;
 
 import java.util.ArrayList;
 
@@ -27,6 +32,7 @@ public class VehiclesActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
 
     private ListVehiclesAdaptater listVehiclesAdaptater;
+    private ArrayList<Vehicles> dataset;
 
     private int nbrPageParcouru;
     private boolean verif;
@@ -113,4 +119,31 @@ public class VehiclesActivity extends AppCompatActivity {
         });
 
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) searchItem.getActionView();
+
+        searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                listVehiclesAdaptater.getFilter().filter(newText);
+                return false;
+            }
+        });
+
+        return true;
+    }
+
 }
