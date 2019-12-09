@@ -80,7 +80,7 @@ public class ListPeopleAdaptater extends RecyclerView.Adapter<ListPeopleAdaptate
 
     public void add(ArrayList<People> listPeople) {                                                     // Ajout d'un object dans la liste
         dataset.addAll(listPeople);
-        datasetFull = new ArrayList<>(listPeople);
+        datasetFull = new ArrayList<>(dataset);
         notifyDataSetChanged();
     }
 
