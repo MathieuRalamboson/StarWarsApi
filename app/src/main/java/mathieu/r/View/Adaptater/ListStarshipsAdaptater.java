@@ -82,7 +82,7 @@ public class ListStarshipsAdaptater extends RecyclerView.Adapter<ListStarshipsAd
 
     public void add(ArrayList<Starships> listStarships) {                                                     // Ajout d'un object dans la liste
         dataset.addAll(listStarships);
-        datasetFull = new ArrayList<>(listStarships);
+        datasetFull = new ArrayList<>(dataset);
         notifyDataSetChanged();
     }
 
