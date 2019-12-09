@@ -82,7 +82,7 @@ public class ListVehiclesAdaptater extends RecyclerView.Adapter<ListVehiclesAdap
 
     public void add(ArrayList<Vehicles> listVehicle) {                                                     // Ajout d'un object dans la liste
         dataset.addAll(listVehicle);
-        datasetFull = new ArrayList<>(listVehicle);
+        datasetFull = new ArrayList<>(dataset);
         notifyDataSetChanged();
     }
 
