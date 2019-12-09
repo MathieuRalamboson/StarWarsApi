@@ -83,7 +83,7 @@ public class ListSpeciesAdaptater extends RecyclerView.Adapter<ListSpeciesAdapta
 
     public void add(ArrayList<Species> listSpecies) {                                                     // Ajout d'un object dans la liste
         dataset.addAll(listSpecies);
-        datasetFull = new ArrayList<>(listSpecies);
+        datasetFull = new ArrayList<>(dataset);
         notifyDataSetChanged();
     }
 

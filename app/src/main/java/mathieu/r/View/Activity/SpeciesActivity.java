@@ -49,32 +49,7 @@ public class SpeciesActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         final GridLayoutManager layoutManager = new GridLayoutManager(this,2); // Choix du nombre de colonne
         recyclerView.setLayoutManager(layoutManager);
-
-        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() { // Check si il y a scroll , si oui on passe à la page suivante
-            @Override
-            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-
-                if (dy > 0) { //Check nbr d'object deja vu
-                    int visibleItemCount = layoutManager.getChildCount();
-                    int totalItemCount = layoutManager.getItemCount();
-                    int pastVisibleItems = layoutManager.findFirstVisibleItemPosition();
-
-                    if(verif) { //Si on touche la fin de la page , plus besoin de verif , passage a une nouvelle page
-                        if( (visibleItemCount + pastVisibleItems) >= totalItemCount) {
-                            Log.i(TAG, "C'est la fin de la page ! ");
-                            verif = false;
-                            nbrPageParcouru ++;
-                            DataRequest(nbrPageParcouru);
-                        }
-                    }
-
-                }
-
-            }
-        });
-
-
+        
         retrofit = new Retrofit.Builder()                                   //Configuration URL
                 .baseUrl("https://swapi.co/api/")                           // Url request
                 .addConverterFactory(GsonConverterFactory.create())         // Convertie la réponse
@@ -82,7 +57,10 @@ public class SpeciesActivity extends AppCompatActivity {
 
         verif = false;
         nbrPageParcouru = 1;
-        DataRequest(nbrPageParcouru);
+        do {
+            DataRequest(nbrPageParcouru);
+            nbrPageParcouru++;
+        } while (nbrPageParcouru < 20);
     }
 
     private void DataRequest(int nbrPageParcouru ) { // Appel vers Api
