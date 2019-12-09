@@ -50,8 +50,9 @@ public class ListSpeciesAdaptater extends RecyclerView.Adapter<ListSpeciesAdapta
         holder.titreView.setText(species.getName());                                                  // Initialisation du titre dans l'objet Species
 
         Glide.with(context)                                                                         // Recuperation d'un image en fonction du numero
-                .load("https://starwars-visualguide.com/assets/img/species/" + species.getNumber() + ".jpg")
-                .centerCrop()                                                                       // URL de l'image
+                .load("https://starwars-visualguide.com/assets/img/species/" + species.getNumber() + ".jpg")// URL de l'image
+                .error(R.drawable.imagenotfound)
+                .centerCrop()
                 .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.imageView);

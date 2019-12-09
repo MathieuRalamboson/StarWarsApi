@@ -49,8 +49,9 @@ public class ListStarshipsAdaptater extends RecyclerView.Adapter<ListStarshipsAd
         holder.titreView.setText(starships.getName());                                                  // Initialisation du titre dans l'objet Starships
 
         Glide.with(context)                                                                         // Recuperation d'un image en fonction du numero
-                .load("https://starwars-visualguide.com/assets/img/starships/" + starships.getNumber() + ".jpg")
-                .centerCrop()                                                                       // URL de l'image
+                .load("https://starwars-visualguide.com/assets/img/starships/" + starships.getNumber() + ".jpg")// URL de l'image
+                .error(R.drawable.imagenotfound)
+                .centerCrop()
                 .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.imageView);

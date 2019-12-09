@@ -49,8 +49,9 @@ public class ListPeopleAdaptater extends RecyclerView.Adapter<ListPeopleAdaptate
         holder.titreView.setText(people.getName());                                                  // Initialisation du titre dans l'objet People
 
         Glide.with(context)                                                                         // Recuperation d'un image en fonction du numero
-                .load("https://starwars-visualguide.com/assets/img/characters/" + people.getNumber() + ".jpg")
-                .centerCrop()                                                                       // URL de l'image
+                .load("https://starwars-visualguide.com/assets/img/characters/" + people.getNumber() + ".jpg")// URL de l'image
+                .error(R.drawable.imagenotfound)
+                .centerCrop()
                 .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.imageView);

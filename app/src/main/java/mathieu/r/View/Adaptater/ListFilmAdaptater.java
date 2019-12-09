@@ -51,8 +51,9 @@ public class ListFilmAdaptater extends RecyclerView.Adapter<ListFilmAdaptater.Vi
         holder.titreView.setText(film.getTitle());                                                  // Initialisation du titre dans l'objet Film
 
         Glide.with(context)                                                                         // Recuperation d'un image en fonction du numero
-                .load("https://starwars-visualguide.com/assets/img/films/" + film.getEpisode_id() + ".jpg")
-                .centerCrop()                                                                       // URL de l'image
+                .load("https://starwars-visualguide.com/assets/img/films/" + film.getEpisode_id() + ".jpg")// URL de l'image
+                .error(R.drawable.imagenotfound)
+                .centerCrop()
                 .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.imageView);

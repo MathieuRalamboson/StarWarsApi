@@ -49,8 +49,9 @@ public class ListPlanetsAdaptater extends RecyclerView.Adapter<ListPlanetsAdapta
         holder.titreView.setText(planets.getName());                                                  // Initialisation du titre dans l'objet Planets
 
         Glide.with(context)                                                                         // Recuperation d'un image en fonction du numero
-                .load("https://starwars-visualguide.com/assets/img/planets/" + planets.getNumber() + ".jpg")
-                .centerCrop()                                                                       // URL de l'image
+                .load("https://starwars-visualguide.com/assets/img/planets/" + planets.getNumber() + ".jpg")// URL de l'image
+                .error(R.drawable.imagenotfound)
+                .centerCrop()
                 .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.imageView);
