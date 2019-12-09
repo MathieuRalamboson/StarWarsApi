@@ -81,7 +81,7 @@ public class ListPlanetsAdaptater extends RecyclerView.Adapter<ListPlanetsAdapta
 
     public void add(ArrayList<Planets> listPlanets) {                                                     // Ajout d'un object dans la liste
         dataset.addAll(listPlanets);
-        datasetFull = new ArrayList<>(listPlanets);
+        datasetFull = new ArrayList<>(dataset);
         notifyDataSetChanged();
     }
 
