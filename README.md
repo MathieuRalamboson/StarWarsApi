@@ -31,19 +31,19 @@ Elle permet de filtrer la liste d'object en fonction de votre texte taper dans l
 - Affichage de la liste des Catégories que l'on peut parcourir
 - Affichage de l'image de chaque Catégorie avec son nom aligné
 - Scrolling 20 par 20
-
 ![Ecran 1](https://user-images.githubusercontent.com/48732335/71378730-2fdeb480-25c9-11ea-9f50-d796954d0fd7.PNG)
 
 # Deuxième Ecran
 - Affichage de la liste de la Catégorie choisi avec une image accompagnant chaque object
 - Scrolling
 - Fonctionalité bar de recherche avec la loupe en haut à droite
-
 ![Ecran 2](https://user-images.githubusercontent.com/48732335/71378794-5e5c8f80-25c9-11ea-8a2d-5bfd6cf46e85.PNG)
 
 # Troisième Ecran
 - Fragment commun
 - Affichage des details de l'object choisi
 - Detail de l'object : Nom , taille, type , poid ...
+
 ![Ecran 3](https://user-images.githubusercontent.com/48732335/71378813-7a603100-25c9-11ea-9348-f2a971562251.PNG)
+
 ![Ecran +](https://user-images.githubusercontent.com/48732335/71378835-9368e200-25c9-11ea-847e-043b41d7a70e.PNG)
