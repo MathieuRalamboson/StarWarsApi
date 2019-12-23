@@ -45,4 +45,5 @@ Elle permet de filtrer la liste d'object en fonction de votre texte taper dans l
 - Fragment commun
 - Affichage des details de l'object choisi
 - Detail de l'object : Nom , taille, type , poid ...
+![Ecran 3](https://user-images.githubusercontent.com/48732335/71378813-7a603100-25c9-11ea-9348-f2a971562251.PNG)
 
