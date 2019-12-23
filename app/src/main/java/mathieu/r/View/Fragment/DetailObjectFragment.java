@@ -86,16 +86,16 @@ public class DetailObjectFragment extends Fragment {
         if(getArguments() != null) { // Si les arguments recu ne sont pas null
             Log.d(TAG,"Lancement du fragment : " + vehicles.getName());
 
-            textView.setText("Title : " + vehicles.getName()); // Setter textLayout
-            model.setText("Title : " + vehicles.getModel()); // Setter textLayout
-            manufacturer.setText("Title : " + vehicles.getManufacturer()); // Setter textLayout
-            cost_in_credits.setText("Title : " + vehicles.getCost_in_credits()); // Setter textLayout
-            max_atmosphering_speed.setText("Title : " + vehicles.getMax_atmosphering_speed()); // Setter textLayout
-            crew.setText("Title : " + vehicles.getCrew()); // Setter textLayout
-            passengers.setText("Title : " + vehicles.getPassengers()); // Setter textLayout
-            cargo_capacity.setText("Title : " + vehicles.getCargo_capacity()); // Setter textLayout
-            consumables.setText("Title : " + vehicles.getConsumables()); // Setter textLayout
-            vehicle_class.setText("Title : " + vehicles.getVehicle_class()); // Setter textLayout
+            textView.setText("Name : " + vehicles.getName()); // Setter textLayout
+            model.setText("Model : " + vehicles.getModel()); // Setter textLayout
+            manufacturer.setText("Manufacturer : " + vehicles.getManufacturer()); // Setter textLayout
+            cost_in_credits.setText("Cost_in_credits : " + vehicles.getCost_in_credits()); // Setter textLayout
+            max_atmosphering_speed.setText("Max_atmosphering_speed : " + vehicles.getMax_atmosphering_speed()); // Setter textLayout
+            crew.setText("Crew : " + vehicles.getCrew()); // Setter textLayout
+            passengers.setText("Passengers : " + vehicles.getPassengers()); // Setter textLayout
+            cargo_capacity.setText("Cargo_capacity : " + vehicles.getCargo_capacity()); // Setter textLayout
+            consumables.setText("Consumables : " + vehicles.getConsumables()); // Setter textLayout
+            vehicle_class.setText("Vehicle_class : " + vehicles.getVehicle_class()); // Setter textLayout
 
             Picasso.with(getContext()) // Setter imageLayout
                     .load("https://starwars-visualguide.com/assets/img/vehicles/" + vehicles.getNumber() + ".jpg")
@@ -123,18 +123,18 @@ public class DetailObjectFragment extends Fragment {
         if(getArguments() != null) { // Si les arguments recu ne sont pas null
             Log.d(TAG,"Lancement du fragment : " + starships.getName());
 
-            textView.setText("Title : " + starships.getName()); // Setter textLayout
-            model.setText("Title : " + starships.getModel()); // Setter textLayout
-            manufacturer.setText("Title : " + starships.getManufacturer()); // Setter textLayout
-            cost_in_credits.setText("Title : " + starships.getCost_in_credits()); // Setter textLayout
-            length.setText("Title : " + starships.getLength()); // Setter textLayout
-            max_atmosphering_speed.setText("Title : " + starships.getMax_atmosphering_speed()); // Setter textLayout
-            passengers.setText("Title : " + starships.getPassengers()); // Setter textLayout
-            cargo_capacity.setText("Title : " + starships.getCargo_capacity()); // Setter textLayout
-            consumables.setText("Title : " + starships.getConsumables()); // Setter textLayout
-            hyperdrive_rating.setText("Title : " + starships.getHyperdrive_rating()); // Setter textLayout
-            MGLT.setText("Title : " + starships.getMGLT()); // Setter textLayout
-            starship_class.setText("Title : " + starships.getStarship_class()); // Setter textLayout
+            textView.setText("Name : " + starships.getName()); // Setter textLayout
+            model.setText("Model : " + starships.getModel()); // Setter textLayout
+            manufacturer.setText("Manufacturer : " + starships.getManufacturer()); // Setter textLayout
+            cost_in_credits.setText("Cost_in_credits : " + starships.getCost_in_credits()); // Setter textLayout
+            length.setText("Length : " + starships.getLength()); // Setter textLayout
+            max_atmosphering_speed.setText("Max_atmosphering_speed : " + starships.getMax_atmosphering_speed()); // Setter textLayout
+            passengers.setText("Passengers : " + starships.getPassengers()); // Setter textLayout
+            cargo_capacity.setText("Cargo_capacity : " + starships.getCargo_capacity()); // Setter textLayout
+            consumables.setText("Consumables : " + starships.getConsumables()); // Setter textLayout
+            hyperdrive_rating.setText("Hyperdrive_rating : " + starships.getHyperdrive_rating()); // Setter textLayout
+            MGLT.setText("MGLT : " + starships.getMGLT()); // Setter textLayout
+            starship_class.setText("Starship_class : " + starships.getStarship_class()); // Setter textLayout
 
             Picasso.with(getContext()) // Setter imageLayout
                     .load("https://starwars-visualguide.com/assets/img/starships/" + starships.getNumber() + ".jpg")
@@ -159,15 +159,15 @@ public class DetailObjectFragment extends Fragment {
         if(getArguments() != null) { // Si les arguments recu ne sont pas null
             Log.d(TAG,"Lancement du fragment : " + species.getName());
 
-            classification.setText("Title : " + species.getName()); // Setter textLayout
-            designation.setText("Title : " + species.getDesignation()); // Setter textLayout
-            average_height.setText("Title : " + species.getAverage_height()); // Setter textLayout
-            skin_colors.setText("Title : " + species.getSkin_colors()); // Setter textLayout
-            hair_colors.setText("Title : " + species.getHair_colors()); // Setter textLayout
-            eye_colors.setText("Title : " + species.getEye_colors()); // Setter textLayout
-            average_lifespan.setText("Title : " + species.getAverage_lifespan()); // Setter textLayout
-            homeworld.setText("Title : " + species.getHomeworld()); // Setter textLayout
-            language.setText("Title : " + species.getLanguage()); // Setter textLayout
+            classification.setText("Classification : " + species.getName()); // Setter textLayout
+            designation.setText("Designation : " + species.getDesignation()); // Setter textLayout
+            average_height.setText("Average_height : " + species.getAverage_height()); // Setter textLayout
+            skin_colors.setText("Skin_colors : " + species.getSkin_colors()); // Setter textLayout
+            hair_colors.setText("Hair_colors : " + species.getHair_colors()); // Setter textLayout
+            eye_colors.setText("Eye_colors : " + species.getEye_colors()); // Setter textLayout
+            average_lifespan.setText("Average_lifespan : " + species.getAverage_lifespan()); // Setter textLayout
+            homeworld.setText("Homeworld : " + species.getHomeworld()); // Setter textLayout
+            language.setText("Language : " + species.getLanguage()); // Setter textLayout
 
             Picasso.with(getContext()) // Setter imageLayout
                     .load("https://starwars-visualguide.com/assets/img/species/" + species.getNumber() + ".jpg")
@@ -191,15 +191,15 @@ public class DetailObjectFragment extends Fragment {
         if(getArguments() != null) { // Si les arguments recu ne sont pas null
             Log.d(TAG,"Lancement du fragment : " + planets.getName());
 
-            textView.setText("Title : " + planets.getName()); // Setter textLayout
-            rotation_period.setText("Title : " + planets.getRotation_period()); // Setter textLayout
-            orbital_period.setText("Title : " + planets.getOrbital_period()); // Setter textLayout
-            diameter.setText("Title : " + planets.getDiameter()); // Setter textLayout
-            climate.setText("Title : " + planets.getClimate()); // Setter textLayout
-            gravity.setText("Title : " + planets.getGravity()); // Setter textLayout
-            terrain.setText("Title : " + planets.getTerrain()); // Setter textLayout
-            surface_water.setText("Title : " + planets.getSurface_water()); // Setter textLayout
-            population.setText("Title : " + planets.getPopulation()); // Setter textLayout
+            textView.setText("Name : " + planets.getName()); // Setter textLayout
+            rotation_period.setText("Rotation_period : " + planets.getRotation_period()); // Setter textLayout
+            orbital_period.setText("Orbital_period : " + planets.getOrbital_period()); // Setter textLayout
+            diameter.setText("Diameter : " + planets.getDiameter()); // Setter textLayout
+            climate.setText("Climate : " + planets.getClimate()); // Setter textLayout
+            gravity.setText("Gravity : " + planets.getGravity()); // Setter textLayout
+            terrain.setText("Terrain : " + planets.getTerrain()); // Setter textLayout
+            surface_water.setText("Surface_water : " + planets.getSurface_water()); // Setter textLayout
+            population.setText("Population : " + planets.getPopulation()); // Setter textLayout
             Picasso.with(getContext()) // Setter imageLayout
                     .load("https://starwars-visualguide.com/assets/img/planets/" + planets.getNumber() + ".jpg")
                     .into(imageView);
@@ -222,15 +222,15 @@ public class DetailObjectFragment extends Fragment {
         if(getArguments() != null) { // Si les arguments recu ne sont pas null
             Log.d(TAG,"Lancement du fragment : " + people.getName());
 
-            textView.setText("Title : " + people.getName()); // Setter textLayout
-            height.setText("Title : " + people.getHeight()); // Setter textLayout
-            mass.setText("Title : " + people.getMass()); // Setter textLayout
-            hair_color.setText("Title : " + people.getHair_color()); // Setter textLayout
-            skin_color.setText("Title : " + people.getSkin_color()); // Setter textLayout
-            eye_color.setText("Title : " + people.getEye_color()); // Setter textLayout
-            birth_year.setText("Title : " + people.getBirth_year()); // Setter textLayout
-            gender.setText("Title : " + people.getGender()); // Setter textLayout
-            homeworld.setText("Title : " + people.getHomeworld()); // Setter textLayout
+            textView.setText("Name : " + people.getName()); // Setter textLayout
+            height.setText("Height : " + people.getHeight()); // Setter textLayout
+            mass.setText("Mass : " + people.getMass()); // Setter textLayout
+            hair_color.setText("Hair_color : " + people.getHair_color()); // Setter textLayout
+            skin_color.setText("Skin_color : " + people.getSkin_color()); // Setter textLayout
+            eye_color.setText("Eye_color : " + people.getEye_color()); // Setter textLayout
+            birth_year.setText("Birth_year : " + people.getBirth_year()); // Setter textLayout
+            gender.setText("Gender : " + people.getGender()); // Setter textLayout
+            homeworld.setText("Homeworld : " + people.getHomeworld()); // Setter textLayout
 
             Picasso.with(getContext()) // Setter imageLayout
                     .load("https://starwars-visualguide.com/assets/img/characters/" + people.getNumber() + ".jpg")
@@ -251,10 +251,10 @@ public class DetailObjectFragment extends Fragment {
             Log.d(TAG,"Lancement du fragment : " + film.getTitle());
 
             textView.setText("Title : " + film.getTitle()); // Setter textLayout
-            opening_crawl.setText("Title : " + film.getOpening_crawl()); // Setter
-            director.setText("Title : " + film.getDirector()); // Setter
-            producer.setText("Title : " + film.getProducer()); // Setter
-            release_date.setText("Title : " + film.getRelease_date()); // Setter
+            opening_crawl.setText("Opening_crawl : " + film.getOpening_crawl()); // Setter
+            director.setText("Director : " + film.getDirector()); // Setter
+            producer.setText("Producer : " + film.getProducer()); // Setter
+            release_date.setText("Release_date : " + film.getRelease_date()); // Setter
 
             Picasso.with(getContext()) // Setter imageLayout
                     .load("https://starwars-visualguide.com/assets/img/films/" + film.getEpisode_id() + ".jpg")
