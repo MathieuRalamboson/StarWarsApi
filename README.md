@@ -2,9 +2,7 @@
  StarWarsApi by Mathieu Ralamboson ESIEA
 
 Projet individuel 4A
-
 Réalisation d'une application android sous AndroidStudio , codé en Java et utilisant une API Rest
-
 J'ai choisi une Api dans le thème de StarWars
 https://swapi.co/
 Le projet comporte 80 commits datant du 22 novembre 2019
@@ -31,12 +29,14 @@ Elle permet de filtrer la liste d'object en fonction de votre texte taper dans l
 - Affichage de la liste des Catégories que l'on peut parcourir
 - Affichage de l'image de chaque Catégorie avec son nom aligné
 - Scrolling 20 par 20
+
 ![Ecran 1](https://user-images.githubusercontent.com/48732335/71378730-2fdeb480-25c9-11ea-9f50-d796954d0fd7.PNG)
 
 # Deuxième Ecran
 - Affichage de la liste de la Catégorie choisi avec une image accompagnant chaque object
 - Scrolling
 - Fonctionalité bar de recherche avec la loupe en haut à droite
+
 ![Ecran 2](https://user-images.githubusercontent.com/48732335/71378794-5e5c8f80-25c9-11ea-8a2d-5bfd6cf46e85.PNG)
 
 # Troisième Ecran
