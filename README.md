@@ -39,6 +39,8 @@ Elle permet de filtrer la liste d'object en fonction de votre texte taper dans l
 - Scrolling
 - Fonctionalité bar de recherche avec la loupe en haut à droite
 
+![Ecran 2](https://user-images.githubusercontent.com/48732335/71378794-5e5c8f80-25c9-11ea-8a2d-5bfd6cf46e85.PNG)
+
 # Troisième Ecran
 - Fragment commun
 - Affichage des details de l'object choisi
