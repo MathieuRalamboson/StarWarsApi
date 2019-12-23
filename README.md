@@ -41,6 +41,8 @@ Elle permet de filtrer la liste d'object en fonction de votre texte taper dans l
 
 ![Ecran 2](https://user-images.githubusercontent.com/48732335/71378794-5e5c8f80-25c9-11ea-8a2d-5bfd6cf46e85.PNG)
 
+![Barre de recherche](https://user-images.githubusercontent.com/48732335/71379230-d7a8b200-25ca-11ea-9f55-4efb1cdfee50.PNG)
+
 # Troisième Ecran
 - Fragment commun
 - Affichage des details de l'object choisi
