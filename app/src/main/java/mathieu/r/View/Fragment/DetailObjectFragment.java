@@ -99,6 +99,7 @@ public class DetailObjectFragment extends Fragment {
 
             Picasso.with(getContext()) // Setter imageLayout
                     .load("https://starwars-visualguide.com/assets/img/vehicles/" + vehicles.getNumber() + ".jpg")
+                    .error(R.drawable.imagenotfound)
                     .into(imageView);
         }
     }
@@ -138,6 +139,7 @@ public class DetailObjectFragment extends Fragment {
 
             Picasso.with(getContext()) // Setter imageLayout
                     .load("https://starwars-visualguide.com/assets/img/starships/" + starships.getNumber() + ".jpg")
+                    .error(R.drawable.imagenotfound)
                     .into(imageView);
         }
     }
@@ -171,6 +173,7 @@ public class DetailObjectFragment extends Fragment {
 
             Picasso.with(getContext()) // Setter imageLayout
                     .load("https://starwars-visualguide.com/assets/img/species/" + species.getNumber() + ".jpg")
+                    .error(R.drawable.imagenotfound)
                     .into(imageView);
         }
     }
@@ -202,6 +205,7 @@ public class DetailObjectFragment extends Fragment {
             population.setText("Population : " + planets.getPopulation()); // Setter textLayout
             Picasso.with(getContext()) // Setter imageLayout
                     .load("https://starwars-visualguide.com/assets/img/planets/" + planets.getNumber() + ".jpg")
+                    .error(R.drawable.imagenotfound)
                     .into(imageView);
         }
     }
@@ -234,6 +238,7 @@ public class DetailObjectFragment extends Fragment {
 
             Picasso.with(getContext()) // Setter imageLayout
                     .load("https://starwars-visualguide.com/assets/img/characters/" + people.getNumber() + ".jpg")
+                    .error(R.drawable.imagenotfound)
                     .into(imageView);
         }
     }
@@ -258,6 +263,7 @@ public class DetailObjectFragment extends Fragment {
 
             Picasso.with(getContext()) // Setter imageLayout
                     .load("https://starwars-visualguide.com/assets/img/films/" + film.getEpisode_id() + ".jpg")
+                    .error(R.drawable.imagenotfound)
                     .into(imageView);
         }
     }
