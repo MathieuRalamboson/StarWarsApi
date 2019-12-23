@@ -32,6 +32,8 @@ Elle permet de filtrer la liste d'object en fonction de votre texte taper dans l
 - Affichage de l'image de chaque Catégorie avec son nom aligné
 - Scrolling 20 par 20
 
+![Ecran 1](https://user-images.githubusercontent.com/48732335/71378730-2fdeb480-25c9-11ea-9f50-d796954d0fd7.PNG)
+
 # Deuxième Ecran
 - Affichage de la liste de la Catégorie choisi avec une image accompagnant chaque object
 - Scrolling
