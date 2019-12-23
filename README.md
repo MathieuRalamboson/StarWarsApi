@@ -4,7 +4,9 @@
 Projet individuel 4A
 Réalisation d'une application android sous AndroidStudio , codé en Java et utilisant une API Rest
 J'ai choisi une Api dans le thème de StarWars
+
 https://swapi.co/
+
 Le projet comporte 80 commits datant du 22 novembre 2019
 
 # Consigne respectées :
